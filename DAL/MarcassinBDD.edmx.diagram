@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="633bbc3b266f41919509b707b1b6a57d" Name="Diagram1">
+        <EntityTypeShape EntityType="MarcassinModel.Badge" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Categorie" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Categorie_Langue" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Competence" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Cour" Width="1.5" PointX="11.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Langue" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Langue_Badge" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Message" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Participant" Width="1.5" PointX="13.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Personnel" Width="1.5" PointX="11.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Room" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Service" Width="1.5" PointX="9" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarcassinModel.Utilisateur" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="MarcassinModel.FK_Langue_Badge_Badge" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Categorie_Categorie" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Categorie_Langue_Categorie" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Competence_Categorie" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Categorie_Langue_Langue" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Competence_Competence" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Cours_Cours" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Participant_Cours" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Langue_Badge_Langue" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Message_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Message_Utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Participant_Personnel" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Personnel_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Personnel_Utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.Utilisateur_Badge" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.Utilisateur_Competence" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.Utilisateur_Room" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
