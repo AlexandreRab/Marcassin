@@ -15,7 +15,7 @@ namespace DAL
             {
                 return null;
             }
-            List<LangueBO> LLBO = new List<LangueBO>();
+            List<LangueBO> listLangueBO = new List<LangueBO>();
             foreach (Langue lan in list)
             {
                 var bo = new LangueBO();
@@ -23,9 +23,9 @@ namespace DAL
                 bo.Langue_intitule = lan.Langue_intitule;
                 bo.Par_Defaut = lan.Par_Defaut;
 
-                LLBO.Add(bo);
+                listLangueBO.Add(bo);
             }
-            return LLBO;
+            return listLangueBO;
         }
     }
 }

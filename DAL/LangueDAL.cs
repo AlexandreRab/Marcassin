@@ -13,11 +13,11 @@ namespace DAL
         {
             using (var context = new MarcassinEntities())
             {
-                List<Langue> LL = context.Langues.ToList();
+                List<Langue> listLangues = context.Langues.ToList();
 
-                List<LangueBO> LLBO = LL.ToListLangueBO();
+                List<LangueBO> listLanguesBO = listLangues.ToListLangueBO();
 
-                return LLBO;
+                return listLanguesBO;
             }
         }
     }
