@@ -64,9 +64,11 @@
     <Compile Include="Cour.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extension.cs" />
     <Compile Include="Langue.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="LangueDAL.cs" />
     <Compile Include="Langue_Badge.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
