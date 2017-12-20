@@ -15,17 +15,37 @@ namespace DAL
             {
                 return null;
             }
-            List<LangueBO> listLangueBO = new List<LangueBO>();
+            List<LangueBO> listLanguesBO = new List<LangueBO>();
             foreach (Langue lan in list)
             {
                 var bo = new LangueBO();
-                bo.id_Langue = lan.id_Langue;
+                bo.Id_Langue = lan.id_Langue;
                 bo.Langue_intitule = lan.Langue_intitule;
                 bo.Par_Defaut = lan.Par_Defaut;
 
-                listLangueBO.Add(bo);
+                listLanguesBO.Add(bo);
             }
-            return listLangueBO;
+            return listLanguesBO;
+        }
+
+        public static List<ServiceBO> ToListServiceBO(this List<Service> list)
+        {
+            if(list == null)
+            {
+                return null;
+            }
+            List<ServiceBO> listServicesBO = new List<ServiceBO>();
+            foreach (Service  ser in list)
+            {
+                var bo = new ServiceBO();
+                bo.Id_Service = ser.id_Service;
+                bo.Nom = ser.Nom;
+                bo.Id_chef = ser.id_chef;
+                bo.GUID = ser.GUID;
+
+                listServicesBO.Add(bo);
+            }
+            return listServicesBO;
         }
     }
 }
