@@ -103,6 +103,7 @@
     <Compile Include="Service.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="ServiceDAL.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
