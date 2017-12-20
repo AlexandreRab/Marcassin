@@ -40,8 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BadgeBO.cs" />
+    <Compile Include="LangueBadgeBO.cs" />
     <Compile Include="LangueBO.cs" />
+    <Compile Include="MessageBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomBO.cs" />
+    <Compile Include="UtilisateurBadgeBO.cs" />
+    <Compile Include="UtilisateurBO.cs" />
+    <Compile Include="UtilisateurRoomBO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
