@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class MessageBO
+    public class MessageBO
     {
         public int id_Message { get; set; }
         public string Contenu { get; set; }

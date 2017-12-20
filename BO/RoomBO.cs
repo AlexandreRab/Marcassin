@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class RoomBO
+    public class RoomBO
     {
         public int id_Room { get; set; }
         public string Nom { get; set; }
