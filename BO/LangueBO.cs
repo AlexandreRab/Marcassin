@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class LangueBO
+    public class LangueBO
     {
         public int id_Langue { get; set; }
         public bool Par_Defaut { get; set; }
