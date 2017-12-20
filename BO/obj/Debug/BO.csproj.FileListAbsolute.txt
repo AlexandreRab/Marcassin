@@ -1,0 +1,6 @@
+D:\GitKraken\Marcassin\BO\bin\Debug\BO.dll
+D:\GitKraken\Marcassin\BO\bin\Debug\BO.pdb
+D:\GitKraken\Marcassin\BO\obj\Debug\BO.csprojResolveAssemblyReference.cache
+D:\GitKraken\Marcassin\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
+D:\GitKraken\Marcassin\BO\obj\Debug\BO.dll
+D:\GitKraken\Marcassin\BO\obj\Debug\BO.pdb
