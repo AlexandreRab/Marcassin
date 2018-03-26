@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class BadgeBO
+    public class Badge_BO
     {
         public int id_Badge { get; set; }
         public string Intitule { get; set; }

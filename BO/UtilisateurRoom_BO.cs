@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class LangueBadgeBO
+    public class UtilisateurRoom_BO
     {
-        public List<LangueBO> Langues { get; set; }
-        public List<BadgeBO> Badges { get; set; }
-
+        public List<Utilisateur_BO> Utilisateurs { get; set; }
+        public List<Room_BO> Rooms { get; set; }
     }
 }

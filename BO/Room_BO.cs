@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class ServiceBO
+    public class Room_BO
     {
-        public int Id_Service { get; set; }
+        public int id_Room { get; set; }
         public string Nom { get; set; }
-        public int Id_chef { get; set; }
-        public Guid GUID { get; set; }
+        public int Nb_utilisateurs { get; set; }
     }
 }

@@ -40,16 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BadgeBO.cs" />
-    <Compile Include="LangueBadgeBO.cs" />
-    <Compile Include="LangueBO.cs" />
-    <Compile Include="MessageBO.cs" />
+    <Compile Include="Badge_BO.cs" />
+    <Compile Include="CategorieLangue_BO.cs" />
+    <Compile Include="Categorie_BO.cs" />
+    <Compile Include="LangueBadge_BO.cs" />
+    <Compile Include="Langue_BO.cs" />
+    <Compile Include="Message_BO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoomBO.cs" />
-    <Compile Include="ServiceBO.cs" />
-    <Compile Include="UtilisateurBadgeBO.cs" />
-    <Compile Include="UtilisateurBO.cs" />
-    <Compile Include="UtilisateurRoomBO.cs" />
+    <Compile Include="Room_BO.cs" />
+    <Compile Include="Service_BO.cs" />
+    <Compile Include="UtilisateurBadge_BO.cs" />
+    <Compile Include="Utilisateur_BO.cs" />
+    <Compile Include="UtilisateurRoom_BO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

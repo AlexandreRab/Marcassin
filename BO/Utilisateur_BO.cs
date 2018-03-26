@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class UtilisateurBO
+    public class Utilisateur_BO
     {
         public int id_Utilisateur { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get;set }
         public string Mail { get; set; }
         public int PhoneNumber { get; set; }
         public string Adresse { get; set; }
@@ -18,7 +20,6 @@ namespace BO
         public bool Sexe { get; set; }
         public bool Est_intervenant { get; set; }
         public Guid GUID { get; set; }
-
 
     }
 }

@@ -28,16 +28,16 @@ namespace DAL
             return listLanguesBO;
         }
 
-        public static List<ServiceBO> ToListServiceBO(this List<Service> list)
+        public static List<Service_BO> ToListServiceBO(this List<Service> list)
         {
             if(list == null)
             {
                 return null;
             }
-            List<ServiceBO> listServicesBO = new List<ServiceBO>();
+            List<Service_BO> listServicesBO = new List<Service_BO>();
             foreach (Service  ser in list)
             {
-                var bo = new ServiceBO();
+                var bo = new Service_BO();
                 bo.Id_Service = ser.id_Service;
                 bo.Nom = ser.Nom;
                 bo.Id_chef = ser.id_chef;

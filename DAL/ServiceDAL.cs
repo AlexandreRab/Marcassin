@@ -9,13 +9,13 @@ namespace DAL
 {
     class ServiceDAL
     {
-       public List<ServiceBO> GetService()
+       public List<Service_BO> GetService()
         {
             using (var context = new MarcassinEntities())
             {
                 List<Service> listServices = context.Services.ToList();
 
-                List<ServiceBO> listServicesBO = listServices.ToListServiceBO();
+                List<Service_BO> listServicesBO = listServices.ToListServiceBO();
 
                 return listServicesBO;
             }
