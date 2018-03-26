@@ -8,7 +8,7 @@ namespace BO
 {
     public class Room_BO
     {
-        public int id_Room { get; set; }
+        public int Id_Room { get; set; }
         public string Nom { get; set; }
         public int Nb_utilisateurs { get; set; }
     }
