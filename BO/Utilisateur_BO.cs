@@ -10,7 +10,7 @@ namespace BO
     {
         public int id_Utilisateur { get; set; }
         public string Nom { get; set; }
-        public string Prenom { get;set }
+        public string Prenom { get; set; }
         public string Mail { get; set; }
         public int PhoneNumber { get; set; }
         public string Adresse { get; set; }
