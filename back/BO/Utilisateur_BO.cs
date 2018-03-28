@@ -8,7 +8,7 @@ namespace BO
 {
     public class Utilisateur_BO
     {
-        public int Id_Utilisateur { get; set; }
+        public int id_Utilisateur { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Mail { get; set; }
@@ -21,6 +21,5 @@ namespace BO
         public bool Est_intervenant { get; set; }
         public Guid GUID { get; set; }
         //public List<Competence_BO> Competences { get; set; }
-
     }
 }
