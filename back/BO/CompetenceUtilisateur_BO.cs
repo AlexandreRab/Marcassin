@@ -10,5 +10,6 @@ namespace BO
     {
         public List<Competence_BO> Competences { get; set; }
         public List<Utilisateur_BO> Utilisateurs { get; set; }
+        public int Note { get; set; }
     }
 }
