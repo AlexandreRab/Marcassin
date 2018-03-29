@@ -1,0 +1,2 @@
+D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache

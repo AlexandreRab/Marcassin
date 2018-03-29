@@ -10,7 +10,7 @@ namespace BO
     {
         public List<Langue_BO> Langues { get; set; }
         public List<Badge_BO> Badges { get; set; }
-        public string Traduction_Badge { get;set }
+        public string Traduction_Badge { get; set; }
 
     }
 }

@@ -8,9 +8,9 @@ namespace BO
 {
     public class Service_BO
     {
-        public int Id_Service { get; set; }
+        public int id_Service { get; set; }
         public string Nom { get; set; }
-        public int Id_chef { get; set; }
+        public int id_chef { get; set; }
         public Guid GUID { get; set; }
     }
 }

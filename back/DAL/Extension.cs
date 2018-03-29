@@ -9,17 +9,17 @@ namespace DAL
 {
     public static class Extension
     {
-        public static List<LangueBO> ToListLangueBO(this List<Langue> list)
+        public static List<Langue_BO> ToListLangueBO(this List<Langue> list)
         {
             if(list == null)
             {
                 return null;
             }
-            List<LangueBO> listLanguesBO = new List<LangueBO>();
+            List<Langue_BO> listLanguesBO = new List<Langue_BO>();
             foreach (Langue lan in list)
             {
-                var bo = new LangueBO();
-                bo.Id_Langue = lan.id_Langue;
+                var bo = new Langue_BO();
+                bo.id_Langue = lan.id_Langue;
                 bo.Langue_intitule = lan.Langue_intitule;
                 bo.Par_Defaut = lan.Par_Defaut;
 
