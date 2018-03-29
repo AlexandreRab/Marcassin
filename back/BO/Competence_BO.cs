@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class Categorie_BO
+    public class Competence_BO
     {
-        public int id_categorie { get; set;}
+        public int id_competence { get; set; }
+
         public string Intitule { get; set; }
-        public string Categorie_mere { get; set; }
-        public List<Categorie_BO> Categorie { get; set; }
+
+        public string Competence_ref { get; set; }
+
         public List<Competence_BO> Competences { get; set; }
     }
 }

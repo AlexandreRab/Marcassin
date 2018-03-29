@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class Cours_BO
+    public class Cours_BO
     {
         private int id_Cours { get; set; }
-        //private competence competence { get; set; }
+        private Competence_BO Competence { get; set; }
         private string Lieu { get; set; }
-        private DateTime meet_date { get; set; }
-        private string Status { get; set; }
+        private DateTime DateReu { get; set; }
+        private string Statut { get; set; }
        
     }
 }
