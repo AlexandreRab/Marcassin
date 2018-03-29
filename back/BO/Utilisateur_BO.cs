@@ -8,7 +8,7 @@ namespace BO
 {
     public class Utilisateur_BO
     {
-        public int Id_Utilisateur { get; set; }
+        public int id_Utilisateur { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Mail { get; set; }

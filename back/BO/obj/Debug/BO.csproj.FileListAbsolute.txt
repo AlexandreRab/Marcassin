@@ -4,3 +4,7 @@ D:\GitKraken\Marcassin\BO\obj\Debug\BO.csprojResolveAssemblyReference.cache
 D:\GitKraken\Marcassin\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
 D:\GitKraken\Marcassin\BO\obj\Debug\BO.dll
 D:\GitKraken\Marcassin\BO\obj\Debug\BO.pdb
+D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BO\obj\Debug\BO.csprojResolveAssemblyReference.cache
+D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
+D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BO\obj\Debug\BO.dll
+D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BO\obj\Debug\BO.pdb

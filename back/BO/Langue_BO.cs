@@ -8,7 +8,7 @@ namespace BO
 {
     public class Langue_BO
     {
-        public int Id_Langue { get; set; }
+        public int id_Langue { get; set; }
         public bool Par_Defaut { get; set; }
         public string Langue_intitule { get; set; }
     }

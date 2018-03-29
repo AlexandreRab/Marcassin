@@ -8,7 +8,7 @@ namespace BO
 {
     public class Message_BO
     {
-        public int Id_Message { get; set; }
+        public int id_Message { get; set; }
         public string Contenu { get; set; }
         public List<Utilisateur_BO> IdSources { get; set; }
         public List<Room_BO> IdRooms { get; set; }
