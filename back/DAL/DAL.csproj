@@ -56,19 +56,24 @@
     <Compile Include="Categorie.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="CategorieLangue_DAL.cs" />
     <Compile Include="Categorie_Langue.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Competence.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Competence_DAL.cs" />
     <Compile Include="Cour.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Cours_DAL.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="Langue.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="LangueBadge_DAL.cs" />
+    <Compile Include="LangueCompetence_DAL.cs" />
     <Compile Include="Langue_Badge.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>

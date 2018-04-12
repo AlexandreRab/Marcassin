@@ -46,6 +46,7 @@
     <Compile Include="Competence_BO.cs" />
     <Compile Include="Cours_BO.cs" />
     <Compile Include="LangueBadge_BO.cs" />
+    <Compile Include="LangueCompetence_BO.cs" />
     <Compile Include="Langue_BO.cs" />
     <Compile Include="Message_BO.cs" />
     <Compile Include="Participant_BO.cs" />
