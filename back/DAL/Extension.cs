@@ -18,10 +18,12 @@ namespace DAL
             List<Langue_BO> listLanguesBO = new List<Langue_BO>();
             foreach (Langue lan in list)
             {
-                var bo = new Langue_BO();
-                bo.id_Langue = lan.id_Langue;
-                bo.Langue_intitule = lan.Langue_intitule;
-                bo.Par_Defaut = lan.Par_Defaut;
+                var bo = new Langue_BO
+                {
+                    id_Langue = lan.id_Langue,
+                    Langue_intitule = lan.Langue_intitule,
+                    Par_Defaut = lan.Par_Defaut
+                };
 
                 listLanguesBO.Add(bo);
             }
@@ -37,11 +39,13 @@ namespace DAL
             List<Service_BO> listServicesBO = new List<Service_BO>();
             foreach (Service  ser in list)
             {
-                var bo = new Service_BO();
-                bo.id_Service = ser.id_Service;
-                bo.Nom = ser.Nom;
-                bo.id_chef = ser.id_chef;
-                bo.GUID = ser.GUID;
+                var bo = new Service_BO
+                {
+                    id_Service = ser.id_Service,
+                    Nom = ser.Nom,
+                    id_chef = ser.id_chef,
+                    GUID = ser.GUID
+                };
 
                 listServicesBO.Add(bo);
             }
@@ -57,10 +61,13 @@ namespace DAL
             List<Badge_BO> listBadgeBO = new List<Badge_BO>();
             foreach (Badge bad in list)
             {
-                var bo = new Badge_BO();
-                bo.id_Badge = bad.id_Badge;
-                bo.Image = bad.images;
-                //bo.Intitule = bad.nom;
+                var bo = new Badge_BO
+                {
+                    id_Badge = bad.id_Badge,
+                    Image = bad.images,
+                    Intitule = bad.nom
+            };
+                
 
                 listBadgeBO.Add(bo);
             }
@@ -77,20 +84,23 @@ namespace DAL
             List<Utilisateur_BO> listUtilisateurBO = new List<Utilisateur_BO>();
             foreach(Utilisateur uti in list)
             {
-                var bo = new Utilisateur_BO();
-                bo.id_Utilisateur = uti.id_Utilisateur;
-                bo.Nom = uti.Nom;
-                bo.Prenom = uti.Prenom;
-                bo.Mail = uti.Mail;
-                bo.Numero_Telephone = uti.Numero_Telephone;
-                bo.Adresse = uti.Adresse;
-                bo.Ville = uti.Ville;
-                bo.Region = uti.Region;
-                bo.Pays = uti.Pays;
-                bo.Sexe = uti.Sexe;
-                bo.Est_intervenant = uti.Est_intervenant;
-                bo.GUID = uti.GUID;
-                //bo.Linkedin = uti.Linkedin;
+                var bo = new Utilisateur_BO
+                {
+                    id_Utilisateur = uti.id_Utilisateur,
+                    Nom = uti.Nom,
+                    Prenom = uti.Prenom,
+                    Mail = uti.Mail,
+                    Numero_Telephone = uti.Numero_Telephone,
+                    Adresse = uti.Adresse,
+                    Ville = uti.Ville,
+                    Region = uti.Region,
+                    Pays = uti.Pays,
+                    Sexe = uti.Sexe,
+                    Est_intervenant = uti.Est_intervenant,
+                    GUID = uti.GUID,
+                    Linkedin = uti.Linkedin
+                };
+               
 
                 listUtilisateurBO.Add(bo);
             }
@@ -105,11 +115,13 @@ namespace DAL
             List<Personnel_BO> listPersonnelBO = new List<Personnel_BO>();
             foreach (Personnel pers in list)
             {
-                var bo = new Personnel_BO();
-                bo.id_Utilisateur = pers.id_Utilisateur;
-                bo.Date_deb_contrat = pers.Date_deb_contrat;
-                bo.Date_fin_contrat = pers.Date_fin_contrat;
-                bo.Est_admin = pers.Est_admin;
+                var bo = new Personnel_BO
+                {
+                    id_Utilisateur = pers.id_Utilisateur,
+                    Date_deb_contrat = pers.Date_deb_contrat,
+                    Date_fin_contrat = pers.Date_fin_contrat,
+                    Est_admin = pers.Est_admin
+                };
             }
             return listPersonnelBO;
         }

@@ -21,5 +21,6 @@ namespace BO
         public bool Est_intervenant { get; set; }
         public Guid GUID { get; set; }
         public List<Competence_BO> Competences { get; set; }
+        public string Linkedin { get; set; }
     }
 }
