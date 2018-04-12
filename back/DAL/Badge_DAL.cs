@@ -7,17 +7,17 @@ using BO;
 
 namespace DAL
 {
-    class ServiceDAL
+    class Badge_DAL
     {
-       public List<Service_BO> GetService()
+        public List<Badge_BO> GetBadge()
         {
             using (var context = new MarcassinEntities())
             {
-                List<Service> listServices = context.Services.ToList();
+                List<Badge> listBadges = context.Badges.ToList();
 
-                List<Service_BO> listServicesBO = listServices.ToListServiceBO();
+                List<Badge_BO> listBadgesBO = listBadges.ToListBadgeBO();
 
-                return listServicesBO;
+                return listBadgesBO;
             }
         }
     }

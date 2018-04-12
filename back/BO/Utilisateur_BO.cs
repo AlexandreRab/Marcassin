@@ -12,14 +12,15 @@ namespace BO
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Mail { get; set; }
-        public int PhoneNumber { get; set; }
+        public string Numero_Telephone { get; set; }
         public string Adresse { get; set; }
         public string Ville { get; set; }
         public string Region { get; set; }
         public string Pays { get; set; }
-        public bool Sexe { get; set; }
+        public string Sexe { get; set; }
         public bool Est_intervenant { get; set; }
         public Guid GUID { get; set; }
         public List<Competence_BO> Competences { get; set; }
+        public string Linkedin { get; set; }
     }
 }
