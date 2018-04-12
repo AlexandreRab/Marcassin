@@ -1,2 +1,4 @@
 D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache

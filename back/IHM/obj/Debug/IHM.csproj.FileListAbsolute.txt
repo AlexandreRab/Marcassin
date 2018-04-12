@@ -3,3 +3,8 @@ D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\IHM\obj\Debug\Mai
 D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\IHM\obj\Debug\App.g.cs
 D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\IHM\obj\Debug\IHM_MarkupCompile.cache
 D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\IHM\obj\Debug\IHM_MarkupCompile.lref
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\IHM\obj\Debug\IHM.csprojResolveAssemblyReference.cache
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\IHM\obj\Debug\MainWindow.g.cs
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\IHM\obj\Debug\App.g.cs
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\IHM\obj\Debug\IHM_MarkupCompile.cache
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\IHM\obj\Debug\IHM_MarkupCompile.lref

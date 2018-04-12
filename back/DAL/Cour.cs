@@ -24,6 +24,7 @@ namespace DAL
         public int id_Competance { get; set; }
         public string Lieu { get; set; }
         public System.DateTime Date { get; set; }
+        public string Status { get; set; }
     
         public virtual Competence Competence { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

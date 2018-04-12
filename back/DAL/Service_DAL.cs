@@ -5,20 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using BO;
 
-
 namespace DAL
 {
-    class LangueDAL
+    class Service_DAL
     {
-        public List<Langue_BO> GetLangue()
+       public List<Service_BO> GetService()
         {
             using (var context = new MarcassinEntities())
             {
-                List<Langue> listLangues = context.Langues.ToList();
+                List<Service> listServices = context.Services.ToList();
 
-                List<Langue_BO> listLanguesBO = listLangues.ToListLangueBO();
+                List<Service_BO> listServicesBO = listServices.ToListServiceBO();
 
-                return listLanguesBO;
+                return listServicesBO;
             }
         }
     }

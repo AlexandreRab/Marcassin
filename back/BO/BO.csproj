@@ -49,6 +49,7 @@
     <Compile Include="LangueBadge_BO.cs" />
     <Compile Include="Langue_BO.cs" />
     <Compile Include="Message_BO.cs" />
+    <Compile Include="Personnel_BO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room_BO.cs" />
     <Compile Include="Service_BO.cs" />
