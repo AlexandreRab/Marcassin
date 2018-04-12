@@ -79,7 +79,8 @@ namespace DAL
             {
                 var bo = new Utilisateur_BO();
                 bo.id_Utilisateur = uti.id_Utilisateur;
-                //bo.Nom = uti.nom;
+                bo.Nom = uti.Nom;
+                bo.Prenom = uti.Prenom;
                 bo.Mail = uti.Mail;
                 bo.Numero_Telephone = uti.Numero_Telephone;
                 bo.Adresse = uti.Adresse;
