@@ -125,5 +125,76 @@ namespace DAL
             }
             return listPersonnelBO;
         }
+        public static List<LangueBadge_BO> ToListLangueBadgeBO (this List<LangueBadge> list)
+        {
+            if (list == null)
+            {
+                return null;
+            }
+            List<LangueBadge_BO> listLangueBadgeBO = new List<LangueBadge_BO>();
+            foreach (LangueBadge lanbad in list)
+            {
+                var bo = new LangueBadge_BO
+                {
+                    id_Badge=lanbad.id_Badge,
+                    id_Langue=lanbad.id_Langue,
+                    traduction_badge=lanbad.traduction_badge
+                };
+            }
+            return listLangueBadgeBO;
+        }
+        public static List<LangueCompetence_BO> ToListLangueCompetenceBO (this List<LangueCompetence> list)
+        {
+            if (list == null)
+            {
+                return null;
+            }
+            List<LangueCompetence_BO> listLangueCompetenceBO = new List<LangueCompetence_BO>();
+            foreach (LangueCompetence lancom in list)
+            {
+                var bo = new LangueCompetence_BO
+                {
+                    id_Competence=lancom.id_Competence,
+                    id_Langue=lancom.id_Langue,
+                    traduction_Competence=lancom.traduction_Competence
+                };
+            }
+            return listLangueCompetenceBO;
+        }
+        public static List<CategorieLangue_BO> ToListCategorieLangueBO (this List<CategorieLangue> list)
+        {
+            if (list == null)
+            {
+                return null;
+            }
+            List<CategorieLangue_BO> listCategorieLangueBO = new List<CategorieLangue_BO>();
+            foreach (CategorieLangue catlan in list)
+            {
+                var bo = new CategorieLangue_BO
+                {
+                    id_Categorie=catlan.id_Categorie,
+                    id_Langue=catlan.id_Langue,
+                    traduction_Categorie=catlan.traduction_Categorie
+                };
+            }
+            return listCategorieLangueBO;
+        }
+        public static List<UtilisateurBadge_BO> ToListUtilisateurBadgeBO (this List<UtilisateurBadge> list)
+        {
+            if (list == null)
+            {
+                return null;
+            }
+            List<UtilisateurBadge_BO> listUtilisateurBadgeBO = new List<UtilisateurBadge_BO>();
+            foreach (UtilisateurBadge utibad in list)
+            {
+                var bo = new UtilisateurBadge_BO
+                {
+                    id_Utilisateur=utibad.id_Utilisateur,
+                    id_Badge=utibad.id_Badge
+                };
+            }
+            return listUtilisateurBadgeBO;
+        }
     }
 }
