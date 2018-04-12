@@ -8,3 +8,9 @@ D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BO\obj\Debug\BO.c
 D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
 D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BO\obj\Debug\BO.dll
 D:\Mes documents\Desktop\Simon\Marcassin\Projet\Marcassin\back\BO\obj\Debug\BO.pdb
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\BO\bin\Debug\BO.dll
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\BO\bin\Debug\BO.pdb
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\BO\obj\Debug\BO.csprojResolveAssemblyReference.cache
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\BO\obj\Debug\BO.dll
+C:\Users\Alween\Desktop\BTS SIO\Marcassin project\Marcassin\back\BO\obj\Debug\BO.pdb

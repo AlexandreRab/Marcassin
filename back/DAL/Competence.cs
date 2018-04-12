@@ -20,6 +20,7 @@ namespace DAL
             this.Competence1 = new HashSet<Competence>();
             this.Cours = new HashSet<Cour>();
             this.Utilisateurs = new HashSet<Utilisateur>();
+            this.Langue_Competence = new HashSet<Langue_Competence>();
         }
     
         public int id_Competence { get; set; }
@@ -35,5 +36,7 @@ namespace DAL
         public virtual ICollection<Cour> Cours { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Utilisateur> Utilisateurs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Langue_Competence> Langue_Competence { get; set; }
     }
 }

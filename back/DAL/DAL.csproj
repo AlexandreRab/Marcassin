@@ -52,6 +52,7 @@
     <Compile Include="Badge.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Badge_DAL.cs" />
     <Compile Include="Categorie.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
@@ -68,7 +69,10 @@
     <Compile Include="Langue.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="LangueDAL.cs" />
+    <Compile Include="Langue_Competence.cs">
+      <DependentUpon>MarcassinBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Langue_DAL.cs" />
     <Compile Include="Langue_Badge.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
@@ -96,6 +100,7 @@
     <Compile Include="Personnel.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Personnel_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
@@ -103,13 +108,20 @@
     <Compile Include="Service.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceDAL.cs" />
+    <Compile Include="Service_DAL.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>MarcassinBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>MarcassinBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilisateur.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utilisateur_DAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

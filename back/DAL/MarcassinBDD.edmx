@@ -4,13 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MarcassinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MarcassinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Badge">
           <Key>
             <PropertyRef Name="id_Badge" />
           </Key>
           <Property Name="id_Badge" Type="int" Nullable="false" />
           <Property Name="images" Type="nvarchar(max)" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Categorie">
           <Key>
@@ -46,6 +47,7 @@
           <Property Name="id_Competance" Type="int" Nullable="false" />
           <Property Name="Lieu" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Langue">
           <Key>
@@ -64,13 +66,15 @@
           <Property Name="id_Badge" Type="int" Nullable="false" />
           <Property Name="Traduction" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Erreurs détectées durant la génération :
-avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Marcassin.dbo.Langue_Competence' ; en outre, aucune clé primaire valide n'a pu être déduite. Cette table/vue a été exclue. Pour utiliser l'entité, vous devez passer en revue votre schéma, ajouter les clés appropriées et supprimer le commentaire associé.
         <EntityType Name="Langue_Competence">
-          <Property Name="id_Langue" Type="int" />
-          <Property Name="id_Competence" Type="int" />
+          <Key>
+            <PropertyRef Name="id_Langue" />
+            <PropertyRef Name="id_Competence" />
+          </Key>
+          <Property Name="id_Langue" Type="int" Nullable="false" />
+          <Property Name="id_Competence" Type="int" Nullable="false" />
           <Property Name="Traduction" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="Message">
           <Key>
             <PropertyRef Name="id_Message" />
@@ -132,8 +136,10 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Marca
             <PropertyRef Name="id_Utilisateur" />
           </Key>
           <Property Name="id_Utilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
           <Property Name="Mail" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Numero_Telephone" Type="nvarchar" MaxLength="13" Nullable="false" />
           <Property Name="Adresse" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Ville" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Region" Type="nvarchar" MaxLength="100" />
@@ -141,6 +147,7 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Marca
           <Property Name="Sexe" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Est_intervenant" Type="bit" Nullable="false" />
           <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Linkedin" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Utilisateur_Badge">
           <Key>
@@ -157,6 +164,7 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Marca
           </Key>
           <Property Name="id_Utilisateur" Type="int" Nullable="false" />
           <Property Name="id_Compétence" Type="int" Nullable="false" />
+          <Property Name="note" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="Utilisateur_Room">
           <Key>
@@ -334,12 +342,30 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Marca
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Erreurs détectées durant la génération :
-erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par une relation, mais elle est introuvable.
-        <Association Name="FK_Traduction_competence_Competence" />-->
-        <!--Erreurs détectées durant la génération :
-erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par une relation, mais elle est introuvable.
-        <Association Name="FK_Traduction_competence_Langue" />-->
+        <Association Name="FK_Traduction_competence_Competence">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="1" />
+          <End Role="Langue_Competence" Type="Self.Langue_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Langue_Competence">
+              <PropertyRef Name="id_Competence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traduction_competence_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Langue_Competence" Type="Self.Langue_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="id_Langue" />
+            </Principal>
+            <Dependent Role="Langue_Competence">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Utilisateur_Badge_Badge">
           <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
           <End Role="Utilisateur_Badge" Type="Self.Utilisateur_Badge" Multiplicity="*" />
@@ -412,6 +438,37 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="MarcassinModelStoreContainer">
           <EntitySet Name="Badge" EntityType="Self.Badge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
@@ -420,6 +477,7 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           <EntitySet Name="Cours" EntityType="Self.Cours" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Langue" EntityType="Self.Langue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Langue_Badge" EntityType="Self.Langue_Badge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Langue_Competence" EntityType="Self.Langue_Competence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
@@ -486,6 +544,14 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Personnel" EntitySet="Personnel" />
           </AssociationSet>
+          <AssociationSet Name="FK_Traduction_competence_Competence" Association="Self.FK_Traduction_competence_Competence">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Langue_Competence" EntitySet="Langue_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traduction_competence_Langue" Association="Self.FK_Traduction_competence_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Langue_Competence" EntitySet="Langue_Competence" />
+          </AssociationSet>
           <AssociationSet Name="FK_Utilisateur_Badge_Badge" Association="Self.FK_Utilisateur_Badge_Badge">
             <End Role="Badge" EntitySet="Badge" />
             <End Role="Utilisateur_Badge" EntitySet="Utilisateur_Badge" />
@@ -511,8 +577,7 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
             <End Role="Utilisateur_Room" EntitySet="Utilisateur_Room" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MarcassinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -524,6 +589,7 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           <Property Name="images" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Langue_Badge" Relationship="Self.FK_Langue_Badge_Badge" FromRole="Badge" ToRole="Langue_Badge" />
           <NavigationProperty Name="Utilisateurs" Relationship="Self.Utilisateur_Badge" FromRole="Badge" ToRole="Utilisateur" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Categorie">
           <Key>
@@ -561,6 +627,7 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           <NavigationProperty Name="Competence2" Relationship="Self.FK_Competence_Competence" FromRole="Competence1" ToRole="Competence" />
           <NavigationProperty Name="Cours" Relationship="Self.FK_Cours_Cours" FromRole="Competence" ToRole="Cours" />
           <NavigationProperty Name="Utilisateurs" Relationship="Self.Utilisateur_Competence" FromRole="Competence" ToRole="Utilisateur" />
+          <NavigationProperty Name="Langue_Competence" Relationship="MarcassinModel.FK_Traduction_competence_Competence" FromRole="Competence" ToRole="Langue_Competence" />
         </EntityType>
         <EntityType Name="Cour">
           <Key>
@@ -572,6 +639,7 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Competence" Relationship="Self.FK_Cours_Cours" FromRole="Cours" ToRole="Competence" />
           <NavigationProperty Name="Participants" Relationship="Self.FK_Participant_Cours" FromRole="Cours" ToRole="Participant" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Langue">
           <Key>
@@ -582,6 +650,7 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           <Property Name="Par_Defaut" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Categorie_Langue" Relationship="Self.FK_Categorie_Langue_Langue" FromRole="Langue" ToRole="Categorie_Langue" />
           <NavigationProperty Name="Langue_Badge" Relationship="Self.FK_Langue_Badge_Langue" FromRole="Langue" ToRole="Langue_Badge" />
+          <NavigationProperty Name="Langue_Competence" Relationship="MarcassinModel.FK_Traduction_competence_Langue" FromRole="Langue" ToRole="Langue_Competence" />
         </EntityType>
         <EntityType Name="Langue_Badge">
           <Key>
@@ -666,7 +735,6 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           </Key>
           <Property Name="id_Utilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Mail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Adresse" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ville" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Region" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -679,6 +747,10 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           <NavigationProperty Name="Badges" Relationship="Self.Utilisateur_Badge" FromRole="Utilisateur" ToRole="Badge" />
           <NavigationProperty Name="Competences" Relationship="Self.Utilisateur_Competence" FromRole="Utilisateur" ToRole="Competence" />
           <NavigationProperty Name="Rooms" Relationship="Self.Utilisateur_Room" FromRole="Utilisateur" ToRole="Room" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Numero_Telephone" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Linkedin" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Langue_Badge_Badge">
           <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
@@ -943,7 +1015,92 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
             <End Role="Room" EntitySet="Rooms" />
             <End Role="Utilisateur" EntitySet="Utilisateurs" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MarcassinModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MarcassinModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Langue_Competence" EntityType="MarcassinModel.Langue_Competence" />
+          <AssociationSet Name="FK_Traduction_competence_Competence" Association="MarcassinModel.FK_Traduction_competence_Competence">
+            <End Role="Competence" EntitySet="Competences" />
+            <End Role="Langue_Competence" EntitySet="Langue_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traduction_competence_Langue" Association="MarcassinModel.FK_Traduction_competence_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="Langue_Competence" EntitySet="Langue_Competence" />
+          </AssociationSet>
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Langue_Competence">
+          <Key>
+            <PropertyRef Name="id_Langue" />
+            <PropertyRef Name="id_Competence" />
+          </Key>
+          <Property Name="id_Langue" Type="Int32" Nullable="false" />
+          <Property Name="id_Competence" Type="Int32" Nullable="false" />
+          <Property Name="Traduction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Competence" Relationship="MarcassinModel.FK_Traduction_competence_Competence" FromRole="Langue_Competence" ToRole="Competence" />
+          <NavigationProperty Name="Langue" Relationship="MarcassinModel.FK_Traduction_competence_Langue" FromRole="Langue_Competence" ToRole="Langue" />
+        </EntityType>
+        <Association Name="FK_Traduction_competence_Competence">
+          <End Type="MarcassinModel.Competence" Role="Competence" Multiplicity="1" />
+          <End Type="MarcassinModel.Langue_Competence" Role="Langue_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Langue_Competence">
+              <PropertyRef Name="id_Competence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traduction_competence_Langue">
+          <End Type="MarcassinModel.Langue" Role="Langue" Multiplicity="1" />
+          <End Type="MarcassinModel.Langue_Competence" Role="Langue_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="id_Langue" />
+            </Principal>
+            <Dependent Role="Langue_Competence">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -953,6 +1110,7 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           <EntitySetMapping Name="Badges">
             <EntityTypeMapping TypeName="MarcassinModel.Badge">
               <MappingFragment StoreEntitySet="Badge">
+                <ScalarProperty Name="nom" ColumnName="nom" />
                 <ScalarProperty Name="id_Badge" ColumnName="id_Badge" />
                 <ScalarProperty Name="images" ColumnName="images" />
               </MappingFragment>
@@ -989,6 +1147,7 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           <EntitySetMapping Name="Cours">
             <EntityTypeMapping TypeName="MarcassinModel.Cour">
               <MappingFragment StoreEntitySet="Cours">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="id_Cours" ColumnName="id_Cours" />
                 <ScalarProperty Name="id_Competance" ColumnName="id_Competance" />
                 <ScalarProperty Name="Lieu" ColumnName="Lieu" />
@@ -1078,9 +1237,12 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
           <EntitySetMapping Name="Utilisateurs">
             <EntityTypeMapping TypeName="MarcassinModel.Utilisateur">
               <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="Numero_Telephone" ColumnName="Numero_Telephone" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
                 <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Adresse" ColumnName="Adresse" />
                 <ScalarProperty Name="Ville" ColumnName="Ville" />
                 <ScalarProperty Name="Region" ColumnName="Region" />
@@ -1115,6 +1277,39 @@ erreur 6004: La table 'Marcassin.dbo.Langue_Competence' est référencée par un
               <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MarcassinModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MarcassinModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MarcassinModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MarcassinModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MarcassinModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MarcassinModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MarcassinModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MarcassinModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MarcassinModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Langue_Competence">
+            <EntityTypeMapping TypeName="MarcassinModel.Langue_Competence">
+              <MappingFragment StoreEntitySet="Langue_Competence">
+                <ScalarProperty Name="Traduction" ColumnName="Traduction" />
+                <ScalarProperty Name="id_Competence" ColumnName="id_Competence" />
+                <ScalarProperty Name="id_Langue" ColumnName="id_Langue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

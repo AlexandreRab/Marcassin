@@ -36,6 +36,9 @@
         <AssociationConnector Association="MarcassinModel.Utilisateur_Badge" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.Utilisateur_Competence" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.Utilisateur_Room" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MarcassinModel.Langue_Competence" Width="1.5" PointX="9" PointY="8" />
+        <AssociationConnector Association="MarcassinModel.FK_Traduction_competence_Competence" />
+        <AssociationConnector Association="MarcassinModel.FK_Traduction_competence_Langue" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

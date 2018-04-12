@@ -19,6 +19,7 @@ namespace DAL
         {
             this.Categorie_Langue = new HashSet<Categorie_Langue>();
             this.Langue_Badge = new HashSet<Langue_Badge>();
+            this.Langue_Competence = new HashSet<Langue_Competence>();
         }
     
         public int id_Langue { get; set; }
@@ -29,5 +30,7 @@ namespace DAL
         public virtual ICollection<Categorie_Langue> Categorie_Langue { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Langue_Badge> Langue_Badge { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Langue_Competence> Langue_Competence { get; set; }
     }
 }

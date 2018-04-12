@@ -7,17 +7,17 @@ using BO;
 
 namespace DAL
 {
-    class LangueDAL
+    class Badge_DAL
     {
-        public List<LangueBO> GetLangue()
+        public List<Badge_BO> GetBadge()
         {
             using (var context = new MarcassinEntities())
             {
-                List<Langue> listLangues = context.Langues.ToList();
+                List<Badge> listBadges = context.Badges.ToList();
 
-                List<LangueBO> listLanguesBO = listLangues.ToListLangueBO();
+                List<Badge_BO> listBadgesBO = listBadges.ToListBadgeBO();
 
-                return listLanguesBO;
+                return listBadgesBO;
             }
         }
     }

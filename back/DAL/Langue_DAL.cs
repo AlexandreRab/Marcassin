@@ -7,17 +7,17 @@ using BO;
 
 namespace DAL
 {
-    class ServiceDAL
+    class Langue_DAL
     {
-       public List<Service_BO> GetService()
+        public List<Langue_BO> GetLangue()
         {
             using (var context = new MarcassinEntities())
             {
-                List<Service> listServices = context.Services.ToList();
+                List<Langue> listLangues = context.Langues.ToList();
 
-                List<Service_BO> listServicesBO = listServices.ToListServiceBO();
+                List<Langue_BO> listLanguesBO = listLangues.ToListLangueBO();
 
-                return listServicesBO;
+                return listLanguesBO;
             }
         }
     }

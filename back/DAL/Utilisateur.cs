@@ -25,7 +25,6 @@ namespace DAL
     
         public int id_Utilisateur { get; set; }
         public string Mail { get; set; }
-        public string PhoneNumber { get; set; }
         public string Adresse { get; set; }
         public string Ville { get; set; }
         public string Region { get; set; }
@@ -33,6 +32,10 @@ namespace DAL
         public string Sexe { get; set; }
         public bool Est_intervenant { get; set; }
         public System.Guid GUID { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public string Numero_Telephone { get; set; }
+        public string Linkedin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
