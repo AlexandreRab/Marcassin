@@ -34,6 +34,7 @@ namespace DAL
         public virtual DbSet<Cour> Cours { get; set; }
         public virtual DbSet<Langue> Langues { get; set; }
         public virtual DbSet<Langue_Badge> Langue_Badge { get; set; }
+        public virtual DbSet<Langue_Competence> Langue_Competence { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Participant> Participants { get; set; }
         public virtual DbSet<Personnel> Personnels { get; set; }
@@ -41,7 +42,7 @@ namespace DAL
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
-        public virtual DbSet<Langue_Competence> Langue_Competence { get; set; }
+        public virtual DbSet<Utilisateur_Competence> Utilisateur_Competence { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

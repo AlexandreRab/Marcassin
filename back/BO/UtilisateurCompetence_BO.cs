@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class LangueCompetence_BO
+    public class UtilisateurCompetence_BO
     {
-        public int id_Langue { get; set; }
+        public int id_Utilisateur { get; set; }
         public int id_Competence { get; set; }
-        public string Traduction { get; set; }
+        public int note { get; set; }
     }
 }

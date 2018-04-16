@@ -12,13 +12,13 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Participant
+    public partial class Utilisateur_Competence
     {
         public int id_Utilisateur { get; set; }
-        public int id_Cours { get; set; }
-        public bool est_orga { get; set; }
+        public int id_Competence { get; set; }
+        public int note { get; set; }
     
-        public virtual Cour Cour { get; set; }
-        public virtual Personnel Personnel { get; set; }
+        public virtual Competence Competence { get; set; }
+        public virtual Utilisateur Utilisateur { get; set; }
     }
 }

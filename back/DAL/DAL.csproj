@@ -69,13 +69,13 @@
     <Compile Include="Langue.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Langue_Badge.cs">
+      <DependentUpon>MarcassinBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Langue_Competence.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Langue_DAL.cs" />
-    <Compile Include="Langue_Badge.cs">
-      <DependentUpon>MarcassinBDD.tt</DependentUpon>
-    </Compile>
     <Compile Include="MarcassinBDD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,6 +97,7 @@
     <Compile Include="Participant.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Participant_DAL.cs" />
     <Compile Include="Personnel.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
@@ -121,6 +122,10 @@
     <Compile Include="Utilisateur.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="UtilisateurCompetence_DAL.cs" />
+    <Compile Include="Utilisateur_Competence.cs">
+      <DependentUpon>MarcassinBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utilisateur_DAL.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,20 +136,9 @@
     </EntityDeploy>
     <None Include="MarcassinBDD.edmx.diagram">
       <DependentUpon>MarcassinBDD.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MarcassinBDD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MarcassinBDD.Context.cs</LastGenOutput>
-      <DependentUpon>MarcassinBDD.edmx</DependentUpon>
-    </Content>
-    <Content Include="MarcassinBDD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MarcassinBDD.edmx</DependentUpon>
-      <LastGenOutput>MarcassinBDD.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -154,6 +148,18 @@
       <Project>{7c225ae1-b636-441a-a2d1-0cf0748b1c58}</Project>
       <Name>BO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MarcassinBDD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MarcassinBDD.edmx</DependentUpon>
+      <LastGenOutput>MarcassinBDD.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MarcassinBDD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MarcassinBDD.edmx</DependentUpon>
+      <LastGenOutput>MarcassinBDD.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

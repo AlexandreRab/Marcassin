@@ -11,7 +11,7 @@ namespace DAL
     {
         public static List<Langue_BO> ToListLangueBO(this List<Langue> list)
         {
-            if(list == null)
+            if (list == null)
             {
                 return null;
             }
@@ -32,12 +32,12 @@ namespace DAL
 
         public static List<Service_BO> ToListServiceBO(this List<Service> list)
         {
-            if(list == null)
+            if (list == null)
             {
                 return null;
             }
             List<Service_BO> listServicesBO = new List<Service_BO>();
-            foreach (Service  ser in list)
+            foreach (Service ser in list)
             {
                 var bo = new Service_BO
                 {
@@ -66,8 +66,8 @@ namespace DAL
                     id_Badge = bad.id_Badge,
                     Image = bad.images,
                     Intitule = bad.nom
-            };
-                
+                };
+
 
                 listBadgeBO.Add(bo);
             }
@@ -82,7 +82,7 @@ namespace DAL
             }
 
             List<Utilisateur_BO> listUtilisateurBO = new List<Utilisateur_BO>();
-            foreach(Utilisateur uti in list)
+            foreach (Utilisateur uti in list)
             {
                 var bo = new Utilisateur_BO
                 {
@@ -100,13 +100,13 @@ namespace DAL
                     GUID = uti.GUID,
                     Linkedin = uti.Linkedin
                 };
-               
+
 
                 listUtilisateurBO.Add(bo);
             }
             return listUtilisateurBO;
         }
-        public static List<Personnel_BO> ToListPersonnelBO (this List<Personnel> list)
+        public static List<Personnel_BO> ToListPersonnelBO(this List<Personnel> list)
         {
             if (list == null)
             {
@@ -122,79 +122,105 @@ namespace DAL
                     Date_fin_contrat = pers.Date_fin_contrat,
                     Est_admin = pers.Est_admin
                 };
+
+                listPersonnelBO.Add(bo);
             }
             return listPersonnelBO;
         }
-        public static List<LangueBadge_BO> ToListLangueBadgeBO (this List<LangueBadge> list)
+
+        public static List<LangueBadge_BO> ToListLangueBadgeBO (this List<Langue_Badge> list)
+
+        
+
         {
             if (list == null)
             {
                 return null;
             }
+
             List<LangueBadge_BO> listLangueBadgeBO = new List<LangueBadge_BO>();
-            foreach (LangueBadge lanbad in list)
+            foreach (Langue_Badge lanbad in list)
             {
                 var bo = new LangueBadge_BO
                 {
                     id_Badge=lanbad.id_Badge,
                     id_Langue=lanbad.id_Langue,
-                    traduction_badge=lanbad.traduction_badge
+                    Traduction_Badge = lanbad.Traduction
                 };
             }
             return listLangueBadgeBO;
         }
-        public static List<LangueCompetence_BO> ToListLangueCompetenceBO (this List<LangueCompetence> list)
+        public static List<LangueCompetence_BO> ToListLangueCompetenceBO (this List<Langue_Competence> list)
         {
             if (list == null)
             {
                 return null;
             }
             List<LangueCompetence_BO> listLangueCompetenceBO = new List<LangueCompetence_BO>();
-            foreach (LangueCompetence lancom in list)
+            foreach (Langue_Competence lancom in list)
             {
                 var bo = new LangueCompetence_BO
                 {
                     id_Competence=lancom.id_Competence,
                     id_Langue=lancom.id_Langue,
-                    traduction_Competence=lancom.traduction_Competence
+                    Traduction=lancom.Traduction
                 };
             }
             return listLangueCompetenceBO;
         }
-        public static List<CategorieLangue_BO> ToListCategorieLangueBO (this List<CategorieLangue> list)
+        public static List<CategorieLangue_BO> ToListCategorieLangueBO (this List<Categorie_Langue> list)
         {
             if (list == null)
             {
                 return null;
             }
             List<CategorieLangue_BO> listCategorieLangueBO = new List<CategorieLangue_BO>();
-            foreach (CategorieLangue catlan in list)
+            foreach (Categorie_Langue catlan in list)
             {
                 var bo = new CategorieLangue_BO
                 {
-                    id_Categorie=catlan.id_Categorie,
+                    id_Categorie=catlan.Id_Categorie,
                     id_Langue=catlan.id_Langue,
-                    traduction_Categorie=catlan.traduction_Categorie
+                    Traduction=catlan.Traduction
                 };
             }
             return listCategorieLangueBO;
         }
-        public static List<UtilisateurBadge_BO> ToListUtilisateurBadgeBO (this List<UtilisateurBadge> list)
+            public static List<Participant_BO> ToListParticipantBO(this List<Participant> list)
+            {
+            List<Participant_BO> listParticipantBO = new List<Participant_BO>();
+            foreach (Participant part in list)
+            {
+                var bo = new Participant_BO()
+                {
+                    id_Utilisateur = part.id_Utilisateur,
+                    id_Cours = part.id_Cours,
+                    est_orga = part.est_orga
+                };
+                listParticipantBO.Add(bo);
+            }
+
+            return listParticipantBO;
+        }
+        public static List<UtilisateurCompetence_BO> ToListUtilisateurCompetence(this List<Utilisateur_Competence> list)
         {
-            if (list == null)
+            if(list == null)
             {
                 return null;
             }
-            List<UtilisateurBadge_BO> listUtilisateurBadgeBO = new List<UtilisateurBadge_BO>();
-            foreach (UtilisateurBadge utibad in list)
+            List<UtilisateurCompetence_BO> listUtilisateurCompetenceBO = new List<UtilisateurCompetence_BO>();
+            foreach(Utilisateur_Competence Uticomp in list)
             {
-                var bo = new UtilisateurBadge_BO
+                var bo = new UtilisateurCompetence_BO()
                 {
-                    id_Utilisateur=utibad.id_Utilisateur,
-                    id_Badge=utibad.id_Badge
+                    id_Utilisateur = Uticomp.id_Utilisateur,
+                    id_Competence = Uticomp.id_Competence,
+                    note = Uticomp.note
                 };
             }
-            return listUtilisateurBadgeBO;
+            return null;
+
         }
     }
+
 }

@@ -43,17 +43,18 @@
     <Compile Include="Badge_BO.cs" />
     <Compile Include="CategorieLangue_BO.cs" />
     <Compile Include="Categorie_BO.cs" />
-    <Compile Include="CompetenceUtilisateur_BO.cs" />
     <Compile Include="Competence_BO.cs" />
     <Compile Include="Cours_BO.cs" />
     <Compile Include="LangueBadge_BO.cs" />
     <Compile Include="Langue_BO.cs" />
     <Compile Include="Message_BO.cs" />
+    <Compile Include="Participant_BO.cs" />
     <Compile Include="Personnel_BO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room_BO.cs" />
     <Compile Include="Service_BO.cs" />
     <Compile Include="UtilisateurBadge_BO.cs" />
+    <Compile Include="UtilisateurCompetence_BO.cs" />
     <Compile Include="Utilisateur_BO.cs" />
     <Compile Include="UtilisateurRoom_BO.cs" />
   </ItemGroup>

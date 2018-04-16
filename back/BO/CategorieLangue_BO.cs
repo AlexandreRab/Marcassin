@@ -8,8 +8,8 @@ namespace BO
 {
     public class CategorieLangue_BO
     {
-        public List<Categorie_BO> Categories{ get; set;}
-        public List<Langue_BO> Langues { get; set; }
+        public int id_Categorie { get; set;}
+        public int id_Langue { get; set; }
         public string Traduction { get; set; }
     }
 }

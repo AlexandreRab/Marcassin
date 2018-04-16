@@ -21,7 +21,7 @@ namespace DAL
         }
     
         public int id_Cours { get; set; }
-        public int id_Competance { get; set; }
+        public int id_Competence { get; set; }
         public string Lieu { get; set; }
         public System.DateTime Date { get; set; }
         public string Status { get; set; }
