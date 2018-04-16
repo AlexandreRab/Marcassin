@@ -29,7 +29,7 @@
         <AssociationConnector Association="MarcassinModel.FK_Competence_Competence" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.FK_Cours_Cours" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.FK_Traduction_competence_Competence" ManuallyRouted="false" />
-        <AssociationConnector Association="MarcassinModel.FK_Utilisateur_Compétence_Competence" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Utilisateur_Competence_Competence" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.FK_Participant_Cours" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.FK_Langue_Badge_Langue" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.FK_Traduction_competence_Langue" ManuallyRouted="false" />
@@ -38,7 +38,7 @@
         <AssociationConnector Association="MarcassinModel.FK_Participant_Personnel" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.FK_Personnel_Service" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.FK_Personnel_Utilisateur" ManuallyRouted="false" />
-        <AssociationConnector Association="MarcassinModel.FK_Utilisateur_Compétence_Utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="MarcassinModel.FK_Utilisateur_Competence_Utilisateur" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.Utilisateur_Badge" ManuallyRouted="false" />
         <AssociationConnector Association="MarcassinModel.Utilisateur_Room" ManuallyRouted="false" />
       </Diagram>

@@ -66,6 +66,7 @@
     <Compile Include="Cour.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Cours_DAL.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="Langue.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
