@@ -8,9 +8,9 @@ namespace BO
 {
     public class Competence_BO
     {
-        public int id_competence { get; set; }
-        public string Intitule { get; set; }
-        public string Competence_ref { get; set; }
-        public List<Competence_BO> Competences { get; set; }
+        public int id_Competence { get; set; }
+        public Nullable<int> id_Competence_ref { get; set; }
+        public int id_Categorie { get; set; }
+        public bool est_actif { get; set; }
     }
 }
