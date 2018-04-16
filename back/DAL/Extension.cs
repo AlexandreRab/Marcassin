@@ -186,8 +186,8 @@ namespace DAL
         /// <summary>
         /// Get all "Competences" from database
         /// </summary>
-        /// <param name="list">list of db object (Competences)</param>
-        /// <returns>list of Competences</returns>
+        /// <param name="list">list of db object Competence </param>
+        /// <returns>list of Competence_BO </returns>
         public static List<Competence_BO> TolistCompetenceBO(this List<Competence> list)
         {
             if(list== null)
