@@ -8,11 +8,11 @@ namespace BO
 {
     public class Cours_BO
     {
-        private int id_Cours { get; set; }
-        private Competence_BO Competence { get; set; }
-        private string Lieu { get; set; }
-        private DateTime DateReu { get; set; }
-        private string Statut { get; set; }
+        public int id_Cours { get; set; }
+        public Competence_BO Competence { get; set; }
+        public string Lieu { get; set; }
+        public DateTime DateReu { get; set; }
+        public string Statut { get; set; }
        
     }
 }

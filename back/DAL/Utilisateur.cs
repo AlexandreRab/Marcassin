@@ -18,13 +18,17 @@ namespace DAL
         public Utilisateur()
         {
             this.Messages = new HashSet<Message>();
+            this.Utilisateur_Competence = new HashSet<Utilisateur_Competence>();
             this.Badges = new HashSet<Badge>();
-            this.Competences = new HashSet<Competence>();
             this.Rooms = new HashSet<Room>();
         }
     
         public int id_Utilisateur { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public string mot_de_passe { get; set; }
         public string Mail { get; set; }
+        public string Numero_Telephone { get; set; }
         public string Adresse { get; set; }
         public string Ville { get; set; }
         public string Region { get; set; }
@@ -32,18 +36,15 @@ namespace DAL
         public string Sexe { get; set; }
         public bool Est_intervenant { get; set; }
         public System.Guid GUID { get; set; }
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
-        public string Numero_Telephone { get; set; }
         public string Linkedin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
         public virtual Personnel Personnel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Badge> Badges { get; set; }
+        public virtual ICollection<Utilisateur_Competence> Utilisateur_Competence { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Competence> Competences { get; set; }
+        public virtual ICollection<Badge> Badges { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Rooms { get; set; }
     }
