@@ -128,7 +128,6 @@ namespace DAL
         }
 
         public static List<LangueBadge_BO> ToListLangueBadgeBO (this List<Langue_Badge> list)
-
         {
             if (list == null)
             {
@@ -211,7 +210,6 @@ namespace DAL
             return listCompetenceBO;
         }
 
-
         public static List<Cours_BO> ToListCoursBO(this List<Cour> list)
         {
             if(list == null)
@@ -225,10 +223,13 @@ namespace DAL
                 foreach (Cour cour in list)
                 {
                     var comp = from Competence in context.Competences
-                               where Competence.Competence1
+                               where Competence.id_Competence == cour.id_Competance
                                select new Competence_BO()
                                {
-
+                                   id_Competence = Competence.id_Competence,
+                                   id_Categorie = Competence.id_categorie,
+                                   est_actif =Competence.est_actif,
+                                   id_Competence_ref =  Competence.id_Competence_ref,
                                };
 
                     if(comp.count != 0)
@@ -250,7 +251,6 @@ namespace DAL
                 return listCoursBO;
             }  
         }
-        
 
     }
 }
