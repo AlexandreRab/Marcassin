@@ -311,6 +311,7 @@ namespace DAL
             {
                 foreach (Cour cour in list)
                 {
+                    //Get all Competences in database
                     var comp = from Competence in context.Competences
                                where Competence.id_Competence == cour.id_Competence
                                select new Competence_BO()
@@ -326,8 +327,9 @@ namespace DAL
                         id_Cours = cour.id_Cours,
                         DateReu = cour.Date,
                         Lieu = cour.Lieu,
-                        Statut = cour.Status,
+                        Statut = cour.Statut,
                         Competence = comp.ElementAt(0),
+                        Description = cour.Description
                     };
 
                    listCoursBO.Add(bo);

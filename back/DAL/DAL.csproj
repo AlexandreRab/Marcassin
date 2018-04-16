@@ -56,7 +56,6 @@
     <Compile Include="Categorie.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="CategorieLangue_DAL.cs" />
     <Compile Include="Categorie_Langue.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
@@ -72,8 +71,6 @@
     <Compile Include="Langue.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="LangueBadge_DAL.cs" />
-    <Compile Include="LangueCompetence_DAL.cs" />
     <Compile Include="Langue_Badge.cs">
       <DependentUpon>MarcassinBDD.tt</DependentUpon>
     </Compile>
@@ -141,7 +138,6 @@
     </EntityDeploy>
     <None Include="MarcassinBDD.edmx.diagram">
       <DependentUpon>MarcassinBDD.edmx</DependentUpon>
-      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

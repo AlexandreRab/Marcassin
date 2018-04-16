@@ -13,6 +13,7 @@ namespace BO
         public string Lieu { get; set; }
         public DateTime DateReu { get; set; }
         public string Statut { get; set; }
+        public string Description { get; set; }
        
     }
 }
