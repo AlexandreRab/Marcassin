@@ -44,7 +44,7 @@
             <PropertyRef Name="id_Cours" />
           </Key>
           <Property Name="id_Cours" Type="int" Nullable="false" />
-          <Property Name="id_Competance" Type="int" Nullable="false" />
+          <Property Name="id_Competence" Type="int" Nullable="false" />
           <Property Name="Lieu" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
@@ -92,7 +92,7 @@
           </Key>
           <Property Name="id_Utilisateur" Type="int" Nullable="false" />
           <Property Name="id_Cours" Type="int" Nullable="false" />
-          <Property Name="est_orga" Type="bit" />
+          <Property Name="est_orga" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Personnel">
           <Key>
@@ -161,10 +161,10 @@
         <EntityType Name="Utilisateur_Competence">
           <Key>
             <PropertyRef Name="id_Utilisateur" />
-            <PropertyRef Name="id_Compétence" />
+            <PropertyRef Name="id_Competence" />
           </Key>
           <Property Name="id_Utilisateur" Type="int" Nullable="false" />
-          <Property Name="id_Compétence" Type="int" Nullable="false" />
+          <Property Name="id_Competence" Type="int" Nullable="false" />
           <Property Name="note" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Utilisateur_Room">
@@ -243,7 +243,7 @@
               <PropertyRef Name="id_Competence" />
             </Principal>
             <Dependent Role="Cours">
-              <PropertyRef Name="id_Competance" />
+              <PropertyRef Name="id_Competence" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -399,7 +399,7 @@
               <PropertyRef Name="id_Competence" />
             </Principal>
             <Dependent Role="Utilisateur_Competence">
-              <PropertyRef Name="id_Compétence" />
+              <PropertyRef Name="id_Competence" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -636,7 +636,7 @@
             <PropertyRef Name="id_Cours" />
           </Key>
           <Property Name="id_Cours" Type="Int32" Nullable="false" />
-          <Property Name="id_Competance" Type="Int32" Nullable="false" />
+          <Property Name="id_Competence" Type="Int32" Nullable="false" />
           <Property Name="Lieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -695,7 +695,7 @@
           </Key>
           <Property Name="id_Utilisateur" Type="Int32" Nullable="false" />
           <Property Name="id_Cours" Type="Int32" Nullable="false" />
-          <Property Name="est_orga" Type="Boolean" />
+          <Property Name="est_orga" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Cour" Relationship="Self.FK_Participant_Cours" FromRole="Participant" ToRole="Cours" />
           <NavigationProperty Name="Personnel" Relationship="Self.FK_Participant_Personnel" FromRole="Participant" ToRole="Personnel" />
         </EntityType>
@@ -769,10 +769,10 @@
         <EntityType Name="Utilisateur_Competence">
           <Key>
             <PropertyRef Name="id_Utilisateur" />
-            <PropertyRef Name="id_Compétence" />
+            <PropertyRef Name="id_Competence" />
           </Key>
           <Property Name="id_Utilisateur" Type="Int32" Nullable="false" />
-          <Property Name="id_Compétence" Type="Int32" Nullable="false" />
+          <Property Name="id_Competence" Type="Int32" Nullable="false" />
           <Property Name="note" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Competence" Relationship="Self.FK_Utilisateur_Compétence_Competence" FromRole="Utilisateur_Competence" ToRole="Competence" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Utilisateur_Compétence_Utilisateur" FromRole="Utilisateur_Competence" ToRole="Utilisateur" />
@@ -857,7 +857,7 @@
               <PropertyRef Name="id_Competence" />
             </Principal>
             <Dependent Role="Cours">
-              <PropertyRef Name="id_Competance" />
+              <PropertyRef Name="id_Competence" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -881,7 +881,7 @@
               <PropertyRef Name="id_Competence" />
             </Principal>
             <Dependent Role="Utilisateur_Competence">
-              <PropertyRef Name="id_Compétence" />
+              <PropertyRef Name="id_Competence" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1187,7 +1187,7 @@
             <EntityTypeMapping TypeName="MarcassinModel.Cour">
               <MappingFragment StoreEntitySet="Cours">
                 <ScalarProperty Name="id_Cours" ColumnName="id_Cours" />
-                <ScalarProperty Name="id_Competance" ColumnName="id_Competance" />
+                <ScalarProperty Name="id_Competence" ColumnName="id_Competence" />
                 <ScalarProperty Name="Lieu" ColumnName="Lieu" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -1306,7 +1306,7 @@
             <EntityTypeMapping TypeName="MarcassinModel.Utilisateur_Competence">
               <MappingFragment StoreEntitySet="Utilisateur_Competence">
                 <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
-                <ScalarProperty Name="id_Compétence" ColumnName="id_Compétence" />
+                <ScalarProperty Name="id_Competence" ColumnName="id_Competence" />
                 <ScalarProperty Name="note" ColumnName="note" />
               </MappingFragment>
             </EntityTypeMapping>

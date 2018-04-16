@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e5d66ef603d34659b7d47c019545e2c7" Name="Diagram1">
+      <Diagram DiagramId="ee11b048aa664b1bbef6e5068170ab61" Name="Diagram1">
         <EntityTypeShape EntityType="MarcassinModel.Badge" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MarcassinModel.Categorie" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MarcassinModel.Categorie_Langue" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />

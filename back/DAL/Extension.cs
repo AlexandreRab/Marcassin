@@ -214,7 +214,7 @@ namespace DAL
                 var bo = new UtilisateurCompetence_BO()
                 {
                     id_Utilisateur = Uticomp.id_Utilisateur,
-                    id_Competence = Uticomp.id_Compétence,
+                    id_Competence = Uticomp.id_Competence,
                     note = Uticomp.note
                 };
             }

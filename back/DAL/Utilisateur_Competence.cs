@@ -15,7 +15,7 @@ namespace DAL
     public partial class Utilisateur_Competence
     {
         public int id_Utilisateur { get; set; }
-        public int id_Compétence { get; set; }
+        public int id_Competence { get; set; }
         public int note { get; set; }
     
         public virtual Competence Competence { get; set; }
