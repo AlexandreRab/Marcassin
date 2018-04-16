@@ -10,7 +10,7 @@ namespace BO
     {
         public int id_categorie { get; set;}
         public string Intitule { get; set; }
-        public int id_Categorie_mere { get; set; }
+        public Nullable<int> id_Categorie_mere { get; set; }
         public List<Competence_BO> Competences { get; set; }
     }
 }
