@@ -126,7 +126,9 @@ namespace DAL
             }
             return listPersonnelBO;
         }
+
         public static List<LangueBadge_BO> ToListLangueBadgeBO (this List<Langue_Badge> list)
+
         {
             if (list == null)
             {
@@ -208,5 +210,47 @@ namespace DAL
             }
             return listCompetenceBO;
         }
+
+
+        public static List<Cours_BO> ToListCoursBO(this List<Cour> list)
+        {
+            if(list == null)
+            {
+                return null;
+            }
+
+            List < Cours_BO > listCoursBO = new List<Cours_BO>();
+            using (var context = new MarcassinEntities())
+            {
+                foreach (Cour cour in list)
+                {
+                    var comp = from Competence in context.Competences
+                               where Competence.Competence1
+                               select new Competence_BO()
+                               {
+
+                               };
+
+                    if(comp.count != 0)
+                    {
+                        comp = comp.ElementAt(0);
+                    }
+
+                    var bo = new Cours_BO
+                    {
+                        id_Cours = cour.id_Cours,
+                        DateReu = cour.Date,
+                        Lieu = cour.Lieu,
+                        Statut = cour.Status,
+                        Competence = comp,
+                    };
+
+                   listCoursBO.Add(bo);
+                }
+                return listCoursBO;
+            }  
+        }
+        
+
     }
 }
