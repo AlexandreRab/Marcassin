@@ -14,10 +14,10 @@ namespace DAL
             using (var context = new MarcassinEntities())
             {
                 List<Competence> listCompetences = context.Competences.ToList();
+                List<Competence_BO> listCompetencesBO = listCompetences.ToListCompetenceBO();
 
-                List<Competence_BO> listCompetencesBO = listCompetences.TolistCompetenceBO();
+                return listCompetencesBO;
             }
-                return null;
         }
     }
 }

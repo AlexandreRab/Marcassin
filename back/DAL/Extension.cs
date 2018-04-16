@@ -9,6 +9,11 @@ namespace DAL
 {
     public static class Extension
     {
+        /// <summary>
+        /// Get all "Langue" from database
+        /// </summary>
+        /// <param name="list">List of db objects Langue </param>
+        /// <returns>List of Langue_BO</returns>
         public static List<Langue_BO> ToListLangueBO(this List<Langue> list)
         {
             if(list == null)
@@ -29,7 +34,11 @@ namespace DAL
             }
             return listLanguesBO;
         }
-
+        /// <summary>
+        /// Get all "Service" from database
+        /// </summary>
+        /// <param name="list">List of db objects Service</param>
+        /// <returns> List of Service_BO</returns>
         public static List<Service_BO> ToListServiceBO(this List<Service> list)
         {
             if(list == null)
@@ -51,7 +60,11 @@ namespace DAL
             }
             return listServicesBO;
         }
-
+        /// <summary>
+        /// Get all "Badge" from database
+        /// </summary>
+        /// <param name="list">List of db objects Badge </param>
+        /// <returns>List of Badge_BO</returns>
         public static List<Badge_BO> ToListBadgeBO(this List<Badge> list)
         {
             if (list == null)
@@ -74,6 +87,11 @@ namespace DAL
             return listBadgeBO;
         }
 
+        /// <summary>
+        /// Get all "Utilisateur" from database
+        /// </summary>
+        /// <param name="list">List of db objects Utilisateur</param>
+        /// <returns> List of Utilisateur_BO</returns>
         public static List<Utilisateur_BO> ToListUtilisateurBO(this List<Utilisateur> list)
         {
             if (list == null)
@@ -106,7 +124,13 @@ namespace DAL
             }
             return listUtilisateurBO;
         }
-        public static List<Personnel_BO> ToListPersonnelBO (this List<Personnel> list)
+
+        /// <summary>
+        /// Get all "Personnel" from database
+        /// </summary>
+        /// <param name="list"> List of db object Personnel</param>
+        /// <returns>List of Personnel_BO</returns>
+        public static List<Personnel_BO> ToListPersonnelBO(this List<Personnel> list)
         {
             if (list == null)
             {
@@ -126,6 +150,12 @@ namespace DAL
             }
             return listPersonnelBO;
         }
+
+        /// <summary>
+        /// get all "Langue_Badge" association table from database
+        /// </summary>
+        /// <param name="list">list of dbobject Langue_Badge</param>
+        /// <returns>List of LangueBadge_BO</returns>
         public static List<LangueBadge_BO> ToListLangueBadgeBO (this List<Langue_Badge> list)
         {
             if (list == null)
@@ -145,6 +175,11 @@ namespace DAL
             }
             return listLangueBadgeBO;
         }
+        /// <summary>
+        /// Get all "Langue_Competence" association table from database
+        /// </summary>
+        /// <param name="list">list of dbobject Langue_Competence</param>
+        /// <returns>List of LangueCompetence_BO</returns>
         public static List<LangueCompetence_BO> ToListLangueCompetenceBO (this List<Langue_Competence> list)
         {
             if (list == null)
@@ -164,6 +199,11 @@ namespace DAL
             }
             return listLangueCompetenceBO;
         }
+        /// <summary>
+        /// Get all "CategorieLangue" association table from database
+        /// </summary>
+        /// <param name="list">List of db object Categorie_Langue</param>
+        /// <returns>List of 'CategorieLangue_BO'</returns>
         public static List<CategorieLangue_BO> ToListCategorieLangueBO (this List<Categorie_Langue> list)
         {
             if (list == null)
@@ -188,9 +228,9 @@ namespace DAL
         /// </summary>
         /// <param name="list">list of db object Competence </param>
         /// <returns>list of Competence_BO </returns>
-        public static List<Competence_BO> TolistCompetenceBO(this List<Competence> list)
+        public static List<Competence_BO> ToListCompetenceBO(this List<Competence> list)
         {
-            if(list== null)
+            if (list == null)
             {
                 return null;
             }
@@ -199,14 +239,148 @@ namespace DAL
             {
                 var bo = new Competence_BO
                 {
-                    id_Competence=cpt.id_Competence,
-                    id_Categorie=cpt.id_categorie,
-                    id_Competence_ref=cpt.id_Competence_ref,
-                    est_actif=cpt.est_actif
+                    id_Competence = cpt.id_Competence,
+                    id_Categorie = cpt.id_categorie,
+                    id_Competence_ref = cpt.id_Competence_ref,
+                    est_actif = cpt.est_actif
                 };
                 listCompetenceBO.Add(bo);
             }
             return listCompetenceBO;
         }
+
+        /// Get all "Participant" from database
+        /// </summary>
+        /// <param name="list">list of db object Participant </param>
+        /// <returns>List of 'Participant_BO'</returns>
+        public static List<Participant_BO> ToListParticipantBO(this List<Participant> list)
+        {
+            List<Participant_BO> listParticipantBO = new List<Participant_BO>();
+            foreach (Participant part in list)
+            {
+                var bo = new Participant_BO()
+                {
+                    id_Utilisateur = part.id_Utilisateur,
+                    id_Cours = part.id_Cours,
+                    est_orga = part.est_orga
+                };
+                listParticipantBO.Add(bo);
+            }
+
+            return listParticipantBO;
+        }
+
+        /// <summary>
+        /// Get all "UtilisateurCompetence" associaton tables in database
+        /// </summary>
+        /// <param name="list">list of db object Utilisateur_Competence</param>
+        /// <returns>List of 'UtilisateurCompetence_BO'</returns>
+        public static List<UtilisateurCompetence_BO> ToListUtilisateurCompetence(this List<Utilisateur_Competence> list)
+        {
+            if (list == null)
+            {
+                return null;
+            }
+            List<UtilisateurCompetence_BO> listUtilisateurCompetenceBO = new List<UtilisateurCompetence_BO>();
+                foreach (Utilisateur_Competence UtiComp in list)
+                {
+                    var bo = new UtilisateurCompetence_BO
+                    {
+                        id_Competence = UtiComp.id_Competence,
+                        id_Utilisateur = UtiComp.id_Utilisateur,
+                        note = UtiComp.note,
+                    };
+                    listUtilisateurCompetenceBO.Add(bo);
+                }
+            return listUtilisateurCompetenceBO;
+        }
+        /// <summary>
+        /// Get all "Cours" from database
+        /// </summary>
+        /// <param name="list">list of db object Cour</param>
+        /// <returns>List of Cours_BO</returns>
+        public static List<Cours_BO> ToListCoursBO(this List<Cour> list)
+        {
+            if(list == null)
+            {
+                return null;
+            }
+
+            List < Cours_BO > listCoursBO = new List<Cours_BO>();
+            using (var context = new MarcassinEntities())
+            {
+                foreach (Cour cour in list)
+                {
+                    var comp = from Competence in context.Competences
+                               where Competence.id_Competence == cour.id_Competence
+                               select new Competence_BO()
+                               {
+                                   id_Competence = Competence.id_Competence,
+                                   id_Categorie = Competence.id_categorie,
+                                   est_actif = Competence.est_actif,
+                                   id_Competence_ref = Competence.id_Competence_ref,
+                               };
+
+                    var bo = new Cours_BO
+                    {
+                        id_Cours = cour.id_Cours,
+                        DateReu = cour.Date,
+                        Lieu = cour.Lieu,
+                        Statut = cour.Status,
+                        Competence = comp.ElementAt(0),
+                    };
+
+                   listCoursBO.Add(bo);
+                }
+                return listCoursBO;
+            }  
+        }
+
+        /// <summary>
+        ///  Get All the "categories" from database
+        /// </summary>
+        /// <param name="list"> List of DB object Categorie </param>
+        /// <returns>List of Categorie_BO</returns>
+        public static List<Categorie_BO> ToListCategorieBO(this List<Categorie> list)
+        {
+            if (list == null)
+            {
+                return null;
+            }
+
+            List<Categorie_BO> listCategoriesBO = new List<Categorie_BO>();
+            using (var context = new MarcassinEntities())
+            {
+                foreach (Categorie cat in list)
+                {
+                    List<Competence_BO> comps = new List<Competence_BO>();
+                    var comp = from Competence in context.Competences
+                               where Competence.id_categorie == cat.id_Categorie
+                               select new Competence_BO()
+                               {
+                                   id_Competence = Competence.id_Competence,
+                                   id_Categorie = Competence.id_categorie,
+                                   est_actif = Competence.est_actif,
+                                   id_Competence_ref = Competence.id_Competence_ref,
+                               };
+                    foreach(Competence_BO co in comp)
+                    {
+                        comps.Add(co);
+                    }
+
+                    var bo = new Categorie_BO
+                    {
+                        id_categorie = cat.id_Categorie,
+                        Competences = comps,
+                        id_Categorie_mere = cat.id_Categorie_Mere,
+                        Intitule = cat.Intitule,
+                    };
+
+                    listCategoriesBO.Add(bo);
+                }
+                return listCategoriesBO;
+            }
+        }
+    
     }
 }
