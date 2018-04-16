@@ -228,7 +228,7 @@ namespace DAL
         /// </summary>
         /// <param name="list">list of db object Competence </param>
         /// <returns>list of Competence_BO </returns>
-        public static List<Competence_BO> TolistCompetenceBO(this List<Competence> list)
+        public static List<Competence_BO> ToListCompetenceBO(this List<Competence> list)
         {
             if (list == null)
             {
@@ -276,13 +276,23 @@ namespace DAL
         /// <param name="list">list of db object Utilisateur_Competence</param>
         /// <returns>List of 'UtilisateurCompetence_BO'</returns>
         public static List<UtilisateurCompetence_BO> ToListUtilisateurCompetence(this List<Utilisateur_Competence> list)
-        { 
-
-                listUtilisateurCompetenceBO.Add(bo);
-            
+        {
+            if (list == null)
+            {
+                return null;
+            }
+            List<UtilisateurCompetence_BO> listUtilisateurCompetenceBO = new List<UtilisateurCompetence_BO>();
+                foreach (Utilisateur_Competence UtiComp in list)
+                {
+                    var bo = new UtilisateurCompetence_BO
+                    {
+                        id_Competence = UtiComp.id_Competence,
+                        id_Utilisateur = UtiComp.id_Utilisateur,
+                        note = UtiComp.note,
+                    };
+                    listUtilisateurCompetenceBO.Add(bo);
+                }
             return listUtilisateurCompetenceBO;
-
-
         }
         /// <summary>
         /// Get all "Cours" from database
