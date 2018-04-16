@@ -183,6 +183,11 @@ namespace DAL
             }
             return listCategorieLangueBO;
         }
+        /// <summary>
+        /// Get all "Competences" from database
+        /// </summary>
+        /// <param name="list">list of db object (Competences)</param>
+        /// <returns>list of Competences</returns>
         public static List<Competence_BO> TolistCompetenceBO(this List<Competence> list)
         {
             if(list== null)
