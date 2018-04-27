@@ -15,7 +15,7 @@ namespace DAL
             {
                 List<Utilisateur_Competence> listUtilisateurCompetence = context.Utilisateur_Competence.ToList();
 
-                List<UtilisateurCompetence_BO> listUtilisateurCompetenceBO = listUtilisateurCompetence.ToListUtilisateurCompetence();
+                List<UtilisateurCompetence_BO> listUtilisateurCompetenceBO = listUtilisateurCompetence.ToListUtilisateurCompetenceBO();
 
                 return listUtilisateurCompetenceBO;
                 
