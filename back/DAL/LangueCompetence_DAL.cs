@@ -15,7 +15,7 @@ namespace DAL
             {
                 List<Langue_Competence> listLangueCompetence = context.Langue_Competence.ToList();
 
-                List<LangueCompetence_BO> listLangueCompetenceBO = listLangueCompetence.ToListLangueCompetence();
+                List<LangueCompetence_BO> listLangueCompetenceBO = listLangueCompetence.ToListLangueCompetenceBO();
 
                 return listLangueCompetenceBO;
                 

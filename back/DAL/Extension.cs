@@ -275,7 +275,7 @@ namespace DAL
         /// </summary>
         /// <param name="list">list of db object Utilisateur_Competence</param>
         /// <returns>List of 'UtilisateurCompetence_BO'</returns>
-        public static List<UtilisateurCompetence_BO> ToListUtilisateurCompetence(this List<Utilisateur_Competence> list)
+        public static List<UtilisateurCompetence_BO> ToListUtilisateurCompetenceBO(this List<Utilisateur_Competence> list)
         {
             if (list == null)
             {

@@ -15,7 +15,7 @@ namespace DAL
             {
                 List<Langue_Badge> listLangueBadge = context.Langue_Badge.ToList();
 
-                List<LangueBadge_BO> listLangueBadgeBO = listLangueBadge.ToListLangueBadge();
+                List<LangueBadge_BO> listLangueBadgeBO = listLangueBadge.ToListLangueBadgeBO();
 
                 return listLangueBadgeBO;
                 

@@ -9,15 +9,15 @@ namespace DAL
 {
     class CategoreLangue_DAL
     {
-        public List<CategoreLangue_BO> GetCategoreLangue()
+        public List<CategorieLangue_BO> GetCategoreLangue()
         {
             using (var context = new MarcassinEntities())
             {
-                List<Categorie_Langue> listCategoreLangue = context.Categorie_Langue.ToList();
+                List<Categorie_Langue> listCategorieLangue = context.Categorie_Langue.ToList();
 
-                List<CategoreLangue_BO> listCategoreLangueBO = listCategoreLangue.ToListCategoreLangue();
+                List<CategorieLangue_BO> listCategorieLangueBO = listCategorieLangue.ToListCategorieLangueBO();
 
-                return listCategoreLangueBO;
+                return listCategorieLangueBO;
                 
             }
         }
