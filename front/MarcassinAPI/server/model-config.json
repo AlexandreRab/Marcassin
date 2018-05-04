@@ -1,0 +1,106 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Utilisateur": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Service": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Badge": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Categorie": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "CategorieLangue": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Competence": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Cours": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Langue": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "LangueBadge": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "LangueCompetence": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Message": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Participant": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Personnel": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "Room": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "UtilisateurBadge": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "UtilisateurCompetence": {
+    "dataSource": "mssql",
+    "public": true
+  },
+  "UtilisateurRoom": {
+    "dataSource": "mssql",
+    "public": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mssql": {
+    "host": "DESKTOP-UDCEH87",
+    "port": 1433,
+    "url": "mssql://admin:Epsi2018!@DESKTOP-UDCEH87/Marcassin",
+    "database": "Marcassin",
+    "password": "Epsi2018!",
+    "name": "mssql",
+    "user": "admin",
+    "connector": "mssql"
+  }
+}
