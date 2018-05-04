@@ -1,6 +1,6 @@
 {
   "name": "Utilisateur",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -222,7 +222,48 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "utilisateurCompetences": {
+      "type": "hasOne",
+      "model": "UtilisateurCompetence",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "utilisateurBadges": {
+      "type": "hasOne",
+      "model": "UtilisateurBadge",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "messages": {
+      "type": "hasMany",
+      "model": "Message",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "utilisateurRooms": {
+      "type": "hasOne",
+      "model": "UtilisateurRoom",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "personnels": {
+      "type": "hasOne",
+      "model": "Personnel",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

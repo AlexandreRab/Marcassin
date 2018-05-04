@@ -1,6 +1,6 @@
 {
   "name": "Cours",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -71,14 +71,14 @@
         "nullable": "NO"
       }
     },
-    "status": {
+    "statut": {
       "type": "String",
       "required": false,
       "length": 50,
       "precision": null,
       "scale": null,
       "mssql": {
-        "columnName": "Status",
+        "columnName": "Statut",
         "dataType": "nvarchar",
         "dataLength": 50,
         "dataPrecision": null,
@@ -88,7 +88,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "Competence": {
+      "type": "hasOne",
+      "model": "Competence",
+      "foreignKey": "idCompetence",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "participants": {
+      "type": "hasOne",
+      "model": "Participant",
+      "foreignKey": "idCours",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

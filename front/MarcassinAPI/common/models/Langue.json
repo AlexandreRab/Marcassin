@@ -1,6 +1,6 @@
 {
   "name": "Langue",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -57,7 +57,32 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "categorieLangues": {
+      "type": "hasOne",
+      "model": "CategorieLangue",
+      "foreignKey": "idLangue",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "langueBadges": {
+      "type": "hasOne",
+      "model": "LangueBadge",
+      "foreignKey": "idLangue",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "langueCompetences": {
+      "type": "hasOne",
+      "model": "LangueCompetence",
+      "foreignKey": "idLangue",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

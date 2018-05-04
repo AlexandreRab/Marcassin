@@ -71,7 +71,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "personnels": {
+      "type": "hasMany",
+      "model": "Personnel",
+      "foreignKey": "idService",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "chef": {
+      "type": "hasOne",
+      "model": "Personnel",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

@@ -1,13 +1,13 @@
 {
   "name": "Badge",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
       "schema": "dbo",
       "table": "Badge"
     }
-  },	
+  },
   "properties": {
     "idBadge": {
       "type": "Number",
@@ -57,7 +57,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "langueBadges": {
+      "type": "hasOne",
+      "model": "LangueBadge",
+      "foreignKey": "idBadge",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "utilisateurBadges": {
+      "type": "hasOne",
+      "model": "UtilisateurBadge",
+      "foreignKey": "idBadge",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",
@@ -68,4 +85,3 @@
   ],
   "methods": {}
 }
-

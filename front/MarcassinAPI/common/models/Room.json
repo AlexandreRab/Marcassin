@@ -1,6 +1,6 @@
 {
   "name": "Room",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -39,25 +39,27 @@
         "dataScale": null,
         "nullable": "NO"
       }
-    },
-    "nbUtilisateurs": {
-      "type": "Number",
-      "required": true,
-      "length": null,
-      "precision": 3,
-      "scale": 0,
-      "mssql": {
-        "columnName": "Nb_utilisateurs",
-        "dataType": "tinyint",
-        "dataLength": null,
-        "dataPrecision": 3,
-        "dataScale": 0,
-        "nullable": "NO"
-      }
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "messages": {
+      "type": "hasMany",
+      "model": "Message",
+      "foreignKey": "idRoom",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "utilisateurRooms": {
+      "type": "hasOne",
+      "model": "UtilisateurRoom",
+      "foreignKey": "idRoom",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

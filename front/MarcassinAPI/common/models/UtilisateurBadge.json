@@ -1,6 +1,6 @@
 {
   "name": "UtilisateurBadge",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -43,7 +43,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "badge": {
+      "type": "hasOne",
+      "model": "Badge",
+      "foreignKey": "idBadge",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "utilisateurs": {
+      "type": "hasOne",
+      "model": "Utilisateur",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",
