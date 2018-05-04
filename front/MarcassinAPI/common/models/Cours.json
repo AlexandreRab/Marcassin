@@ -71,14 +71,14 @@
         "nullable": "NO"
       }
     },
-    "status": {
+    "statut": {
       "type": "String",
       "required": false,
       "length": 50,
       "precision": null,
       "scale": null,
       "mssql": {
-        "columnName": "Status",
+        "columnName": "Statut",
         "dataType": "nvarchar",
         "dataLength": 50,
         "dataPrecision": null,
