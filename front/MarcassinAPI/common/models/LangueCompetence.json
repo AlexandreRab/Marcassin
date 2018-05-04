@@ -1,6 +1,6 @@
 {
   "name": "LangueCompetence",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -58,7 +58,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "competence": {
+      "type": "hasOne",
+      "model": "Competence",
+      "foreignKey": "idCompetence",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "langue": {
+      "type": "hasOne",
+      "model": "Langue",
+      "foreignKey": "idLangue",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

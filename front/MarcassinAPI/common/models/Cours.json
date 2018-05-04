@@ -1,6 +1,6 @@
 {
   "name": "Cours",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -88,7 +88,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "Competence": {
+      "type": "hasOne",
+      "model": "Competence",
+      "foreignKey": "idCompetence",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "participants": {
+      "type": "hasOne",
+      "model": "Participant",
+      "foreignKey": "idCours",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

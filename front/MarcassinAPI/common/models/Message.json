@@ -1,6 +1,6 @@
 {
   "name": "Message",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -40,7 +40,7 @@
         "nullable": "NO"
       }
     },
-    "idSource": {
+    "idUtilisateur": {
       "type": "Number",
       "id": 1,
       "required": true,
@@ -89,7 +89,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "utilisateur": {
+      "type": "hasOne",
+      "model": "Utilisateur",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "rooms": {
+      "type": "hasOne",
+      "model": "Room",
+      "foreignKey": "idRoom",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

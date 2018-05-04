@@ -1,6 +1,6 @@
 {
   "name": "Competence",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -74,7 +74,48 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "utilisateurCompetences": {
+      "type": "hasOne",
+      "model": "UtilisateurCompetence",
+      "foreignKey": "idCompetence",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "categorie": {
+      "type": "belongsTo",
+      "model": "Categorie",
+      "foreignKey": "idCategorie",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "competences": {
+      "type": "belongsTo",
+      "model": "Competence",
+      "foreignKey": "idCompetenceRef",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "langueCompetences": {
+      "type": "hasOne",
+      "model": "LangueCompetence",
+      "foreignKey": "idCompetence",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "cours": {
+      "type": "hasMany",
+      "model": "Cours",
+      "foreignKey": "idCompetence",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

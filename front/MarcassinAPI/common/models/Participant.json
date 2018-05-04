@@ -1,6 +1,6 @@
 {
   "name": "Participant",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -58,7 +58,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "personnels": {
+      "type": "hasOne",
+      "model": "Personnel",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "cours": {
+      "type": "hasOne",
+      "model": "Cours",
+      "foreignKey": "idCours",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

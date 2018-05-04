@@ -1,6 +1,6 @@
 {
   "name": "UtilisateurRoom",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -43,7 +43,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "utilisateurs": {
+      "type": "hasOne",
+      "model": "Utilisateur",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "rooms": {
+      "type": "hasOne",
+      "model": "Room",
+      "foreignKey": "idRoom",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

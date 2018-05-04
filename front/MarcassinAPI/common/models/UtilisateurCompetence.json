@@ -1,6 +1,6 @@
 {
   "name": "UtilisateurCompetence",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -58,7 +58,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "utilisateurs": {
+      "type": "hasOne",
+      "model": "Utilisateur",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "competences": {
+      "type": "hasOne",
+      "model": "Competence",
+      "foreignKey": "idCompetence",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

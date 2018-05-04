@@ -1,6 +1,6 @@
 {
   "name": "Categorie",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -58,7 +58,32 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "competences": {
+      "type": "hasMany",
+      "model": "Competence",
+      "foreignKey": "idCategorie",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "categories": {
+      "type": "belongsTo",
+      "model": "Categorie",
+      "foreignKey": "idCategorieMere",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "categorieLangues": {
+      "type": "hasOne",
+      "model": "CategorieLangue",
+      "foreignKey": "idCategorie",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

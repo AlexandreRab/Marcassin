@@ -1,6 +1,6 @@
 {
   "name": "Personnel",
-   "base": "PersistedModel",
+  "base": "PersistedModel",
   "options": {
     "idInjection": false,
     "mssql": {
@@ -88,7 +88,32 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "participants": {
+      "type": "hasOne",
+      "model": "Participant",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "services": {
+      "type": "hasOne",
+      "model": "Service",
+      "foreignKey": "idService",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "utilisateurs": {
+      "type": "hasOne",
+      "model": "Utilisateur",
+      "foreignKey": "idUtilisateur",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",
@@ -99,4 +124,3 @@
   ],
   "methods": {}
 }
-
