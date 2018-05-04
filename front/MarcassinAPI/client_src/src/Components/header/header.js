@@ -8,9 +8,9 @@ const Header = (est_chef, utilisateur) => {
             <nav className="nav-fixed light-blue lighten-1">
                 <div className="nav-wrapper">
 
-                    <a href="/" className="brand-logo">
+                    <Link to="/" className="brand-logo">
                         <img src={logo} className="header-logo" alt="logo"/>
-                    </a>
+                    </Link>
                     <a data-target="main-menu" className="sidenav-trigger">
                         <i className="fa fa-bars"></i>
                     </a>
@@ -18,14 +18,14 @@ const Header = (est_chef, utilisateur) => {
                     <ul className="right hide-on-med-and-down">
                         <li>
                         
-                        <div class="input-field">
+                        <div className="input-field">
                             <input id="search" type="search" />
-                            <label class="label-icon" for="search">
-                                <i class="fa fa-search fa-sm"></i>
+                            <label className="label-icon" htmlFor="search">
+                                <i className="fa fa-search fa-sm"></i>
                             </label>
                             
                         </div>
-                    
+                     
                         </li>
                         
                         <li>

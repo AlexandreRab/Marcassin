@@ -14,7 +14,6 @@ const Main = () => (
     <main>
         <Switch>
             <Route exact path='/' component={ ReceptionPage } />
-            
             <Route exact path='/Search' component={ SearchPage } />
             <Route exact path='/Profile' component={ ProfilPage } />
             <Route exact path='/Messaging-box' component={ MessagePage } />
