@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from './Components/Main'
+import Routes from './Components/Routes'
 import Header from './Components/header/header';
 import { Link } from 'react-router-dom';
 //import ConnectionPage from './Pages/ConnectionPage'
@@ -11,7 +11,7 @@ const App = () => {
   <div>
     <Header est_chef={ true } />
     <div className="container">
-      <Main />
+      <Routes />
     </div>
     <div className="fixed-action-btn">
       <Link to="/Course/Create" className=" btn-floating btn-large red" > <i className="fa fa-plus "></i></Link>
