@@ -59,7 +59,7 @@
   "validations": [],
   "relations": {
     "categorieLangues": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "CategorieLangue",
       "foreignKey": "idLangue",
       "options": {
@@ -67,7 +67,7 @@
       }
     },
     "langueBadges": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "LangueBadge",
       "foreignKey": "idLangue",
       "options": {
@@ -75,7 +75,7 @@
       }
     },
     "langueCompetences": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "LangueCompetence",
       "foreignKey": "idLangue",
       "options": {

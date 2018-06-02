@@ -73,7 +73,7 @@
     },
     "statut": {
       "type": "String",
-      "required": false,
+      "required": true,
       "length": 50,
       "precision": null,
       "scale": null,
@@ -83,9 +83,24 @@
         "dataLength": 50,
         "dataPrecision": null,
         "dataScale": null,
-        "nullable": "YES"
+        "nullable": "NO"
       }
-    }
+    },
+	"description": {
+	"type":"String",
+	"required":false,
+	"length":null,
+	"precision":null,
+	"scale":null,
+	"mssql": {
+		"columnName": "Description",
+		"dataType" : "text",
+		"dataLength": null,
+		"dataPrecision":null,
+		"dataScale":null,
+		"nullable": "YES"
+		}
+	}
   },
   "validations": [],
   "relations": {
@@ -98,7 +113,7 @@
       }
     },
     "participants": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "Participant",
       "foreignKey": "idCours",
       "options": {

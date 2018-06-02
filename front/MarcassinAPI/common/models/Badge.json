@@ -59,7 +59,7 @@
   "validations": [],
   "relations": {
     "langueBadges": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "LangueBadge",
       "foreignKey": "idBadge",
       "options": {
@@ -67,7 +67,7 @@
       }
     },
     "utilisateurBadges": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "UtilisateurBadge",
       "foreignKey": "idBadge",
       "options": {

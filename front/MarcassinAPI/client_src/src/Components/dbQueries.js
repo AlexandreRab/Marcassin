@@ -1,10 +1,11 @@
 import axios from 'axios'
 
 /**
- * Get all from url 
- * 
+ * Get all from url
+ * @param {*} url 
+ * @Simon HUET
  */
-function getFromApi(url){
+export function getFromApi(url){
      const request = axios.get(url)
     .then(response =>{
          return response.data 
@@ -14,4 +15,14 @@ function getFromApi(url){
     })
     return request
 };
-export default getFromApi;
+
+/**
+ * Post data in database
+ * @param {*} url 
+ * @Simon HUET
+ */
+export function postInApi(url){
+    axios.post(url).then(response=> console.log(response))
+};
+
+

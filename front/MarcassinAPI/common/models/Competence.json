@@ -76,7 +76,7 @@
   "validations": [],
   "relations": {
     "utilisateurCompetences": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "UtilisateurCompetence",
       "foreignKey": "idCompetence",
       "options": {
@@ -84,7 +84,7 @@
       }
     },
     "categorie": {
-      "type": "belongsTo",
+      "type": "hasOne",
       "model": "Categorie",
       "foreignKey": "idCategorie",
       "options": {
@@ -100,7 +100,7 @@
       }
     },
     "langueCompetences": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "LangueCompetence",
       "foreignKey": "idCompetence",
       "options": {

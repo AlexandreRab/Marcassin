@@ -90,7 +90,7 @@
   "validations": [],
   "relations": {
     "participants": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "Participant",
       "foreignKey": "idUtilisateur",
       "options": {

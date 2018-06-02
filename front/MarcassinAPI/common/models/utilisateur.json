@@ -224,7 +224,7 @@
   "validations": [],
   "relations": {
     "utilisateurCompetences": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "UtilisateurCompetence",
       "foreignKey": "idUtilisateur",
       "options": {
@@ -232,7 +232,7 @@
       }
     },
     "utilisateurBadges": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "UtilisateurBadge",
       "foreignKey": "idUtilisateur",
       "options": {
@@ -248,14 +248,14 @@
       }
     },
     "utilisateurRooms": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "UtilisateurRoom",
       "foreignKey": "idUtilisateur",
       "options": {
         "nestRemoting": true
       }
     },
-    "personnels": {
+    "personnel": {
       "type": "hasOne",
       "model": "Personnel",
       "foreignKey": "idUtilisateur",

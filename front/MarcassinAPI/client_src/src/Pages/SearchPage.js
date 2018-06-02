@@ -1,70 +1,106 @@
 import React, {Component} from 'react';
-import getFromApi from '../Components/dbQueries'
+import {getFromApi} from '../Components/dbQueries'
+import Search from '../Components/search/search'
+import SearchResult from '../Components/search/searchResult'
 
+/**
+ * Searching page by categories or competence
+ * @ Simon-Huet
+ */
 class SearchPage extends Component {
     constructor() {
         super();
         this.state = {
-            courses: []
+            getUrl: {
+                "getCoursesByIdCompetence": "http://localhost:3000/api/Cours?filter[include][participants]&filter[where][stat" +
+                        "ut]=Pending&filter[where][idCompetence]="
+            },
+            courses: [],
+            traduction: ''
         }
     }
+    componentWillMount() {}
+    getSearchParams = (params) => {
+        // all competence for a categorie
+        if (params instanceof Array) {
+            let courses = []
+            params.map(param => {
+                return getFromApi(this.state.getUrl.getCoursesByIdCompetence + param.value.idCompetence).then(data => {
+                    if (data.length) {
+                        data.map(course => {
+                            return getFromApi("http://localhost:3000/api/LangueCompetences?filter[where][idCompetence]=" + course.idCompetence + "&filter[where][idLangue]=1").then(langue => {
+                                let getUti = []
+                                getUti.push(course.participants.filter(part => {
+                                    return part.estOrga
+                                }))
+                                return getFromApi("http://localhost:3000/api/Utilisateurs/" + getUti[0][0].idUtilisateur).then(orga => {
+                                    course["langueCompetence"] = langue[0]
+                                    course["organisateur"] = orga
 
-    componentWillMount() {
-        getFromApi('http://localhost:3000/api/Cours?filter[include][Competence]').then(data => {
-            this.setState({courses: data});
-        })
+                                    courses.push(course)
+                                    courses.sort((a, b) => {
+                                        var dateA = new Date(a.Date)
+                                        var dateB = new Date(b.Date)
+                                        return dateA - dateB
+                                    });
+                                    return this.setState({courses})
+                                })
 
+                            })
+
+                        })
+                    }
+                })
+            })
+
+        } else {
+            //All course for One competence
+            getFromApi(this.state.getUrl.getCoursesByIdCompetence + params.value.idCompetence).then(data => {
+                let courses = []
+                Object
+                    .keys(data)
+                    .map(key => {
+                        return getFromApi("http://localhost:3000/api/LangueCompetences?filter[where][idCompetence]=" + params.value.idCompetence + "&filter[where][idLangue]=1").then(course => {
+                            let getUti = []
+                            getUti.push(data[key].participants.filter(part => {
+                                return part.estOrga
+                            }))
+                            return getFromApi("http://localhost:3000/api/Utilisateurs/" + getUti[0][0].idUtilisateur).then(orga => {
+                                data[key].langueCompetence = course[0]
+                                data[key].organisateur = orga
+                                courses.push(data[key])
+                                courses.sort((a, b) => {
+                                    var dateA = new Date(a.Date)
+                                    var dateB = new Date(b.Date)
+                                    return dateA - dateB
+                                });
+                                return this.setState({courses})
+                            })
+                        })
+
+                    })
+            })
+        }
     }
-     //?filter[include][Competence]&filter[where][or][0][statut]=Pending&filter[where][or][1][statut]=Refused
-    /*getCourses = () => {
-        //
-        axios.get('http://localhost:3000/api/Cours?filter[include][Competence]&filter[where][or][0][statut]=Pending&filter[where][or][1][statut]=Refused')
-        .then(response =>{
-            this.setState({courses : response.data});
-        })
-    }*/
-
-    /*getCompetenceById = () =>{
-        axios.get('http://localhost:3000/api/')
-    }*/
-
     render() {
-        const { courses } = this.state;
-        console.log(courses)
+        const {courses} = this.state;
+
+        courses.sort((a, b) => {
+            return (new Date(a.date) > new Date(b.date)
+                ? 1
+                : ((new Date(b.date) > new Date(a.date))
+                    ? -1
+                    : 0))
+        });
         return (
-            <div>
-                <h1>Compétences
-                </h1>
-                <div className="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    Compétence
-                                </th>
-                                <th>
-                                    Nom du formateur
-                                </th>
-                                <th>
-                                    test
-                                </th>
-                                <th></th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {courses && Object.keys(courses).map( key => {
-                                return(
-                                    <tr key={courses[key].idCours}>
-                                        <td>{courses[key].idCompetence}</td>
-                                        <td>{courses[key].idCours}</td>
-                                        <td>{courses[key].statut}</td>
-                                        <td></td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
+            <div className="col s12">
+                <h2>Rechercher un cours</h2>
+                <div className="row search-bar">
+                    <Search getSearchParams={this.getSearchParams}/>
+                </div>
+                <div className=" row search-result-wrapper">
+                    {courses.length > 0 && <SearchResult courses={courses}/>}
+
                 </div>
             </div>
         )
