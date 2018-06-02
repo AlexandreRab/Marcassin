@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 //import ConnectionPage from './Pages/ConnectionPage'
 
 const App = () => {
+  let coursesPath = ['/Search','/search','/incomming-courses','/Incomming-courses','/past-courses','/Past-courses','/Course/:id', '/course/:id'];
+  
   return (
     //si connecté lancer ça
       // remplacer par l'utilisateur récup depuis la bdd
@@ -13,9 +15,13 @@ const App = () => {
     <div className="container">
       <Routes />
     </div>
+    
+    {coursesPath.includes(window.location.pathname) &&
     <div className="fixed-action-btn">
-      <Link to="/Course/Create" className=" btn-floating btn-large red" > <i className="fa fa-plus "></i></Link>
+      <Link to="/course/add" className=" btn-floating btn-large red" > <i className="fa fa-plus "></i></Link>
     </div>
+    }
+    
   </div>
   )
 

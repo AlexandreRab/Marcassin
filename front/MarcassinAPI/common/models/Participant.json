@@ -59,7 +59,7 @@
   },
   "validations": [],
   "relations": {
-    "personnels": {
+    "personnel": {
       "type": "hasOne",
       "model": "Personnel",
       "foreignKey": "idUtilisateur",

@@ -76,7 +76,7 @@
       }
     },
     "categorieLangues": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "CategorieLangue",
       "foreignKey": "idCategorie",
       "options": {

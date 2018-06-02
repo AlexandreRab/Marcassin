@@ -52,7 +52,7 @@
       }
     },
     "utilisateurRooms": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "UtilisateurRoom",
       "foreignKey": "idRoom",
       "options": {

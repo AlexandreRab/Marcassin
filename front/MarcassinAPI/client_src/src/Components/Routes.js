@@ -18,8 +18,8 @@ const Routes = () => (
             <Route exact path='/search' component={ SearchPage } />
             <Route exact path='/profile' component={ ProfilPage } />
             <Route exact path='/messaging-box' component={ MessagePage } />
-            <Route exact path='/course' component={ CoursePage} />
-            <Route exact path='/course/add' component={addCoursePage} />
+            <Route exact path='/course/add' component={ addCoursePage } />
+            <Route exact path='/course/:id' component={ CoursePage } />
             <Route exact path='/incomming-courses' component={ IncCourseDashBoardPage } />
             <Route exact path='/past-courses' component={ FinCourseDashBoardPage} />
         </Switch>
