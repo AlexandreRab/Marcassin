@@ -24,7 +24,7 @@ class SearchResult extends Component {
                         : courses.length + ' resultats trouvés'} `}
                 </p>
                 <div className="table">
-                    <table>
+                    <table className='striped responsive-table'>
                         <thead>
                             <tr>
                                 <th>

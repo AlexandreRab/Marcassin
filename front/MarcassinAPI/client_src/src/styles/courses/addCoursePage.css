@@ -85,3 +85,7 @@ textarea.materialize-textarea:focus:not([readonly])+label
  .add-course_Date_label >span:nth-child(1):active:focus{
  color: #42a5f5 ;
 }
+
+.collection-item.active{
+    background-color: #42a5f5 !important;
+}

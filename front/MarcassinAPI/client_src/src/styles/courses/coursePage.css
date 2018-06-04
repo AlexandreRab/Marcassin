@@ -1,5 +1,15 @@
 .collapsible-body{
-    display:inherit !important;
+    display: inherit !important;
+    flex-wrap: wrap;
+}
+.course-btn-wrapper{
+    display: flex;
+    flex-wrap:wrap;
+    padding: 2px;
+    margin: 0px;
+}
+.course-btn{
+    margin-left: 2px;
 }
 blockquote{
     border-left-color: #42a5f5;

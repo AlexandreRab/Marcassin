@@ -4,6 +4,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment'
 require('moment/locale/fr');
 
+
+/**
+ * date picker
+ * @Simon-HUET
+ */
  class TimeSelector extends Component {
         constructor(props) {
             super(props);
@@ -13,9 +18,10 @@ require('moment/locale/fr');
             }
         }
         
-    handleChange = (e) => {
-        this.setState({selectedDate : e})
-        this.props.handler(e)
+    handleChange = (selectedDate) => {
+        this.setState({selectedDate})
+        // get the good format for database datetime
+        this.props.handler(selectedDate.toISOString())
     }
     render(){
     return (

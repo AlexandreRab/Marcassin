@@ -44,7 +44,7 @@
   },
   "validations": [],
   "relations": {
-    "utilisateurs": {
+    "utilisateur": {
       "type": "hasOne",
       "model": "Utilisateur",
       "foreignKey": "idUtilisateur",
@@ -52,7 +52,7 @@
         "nestRemoting": true
       }
     },
-    "rooms": {
+    "room": {
       "type": "hasOne",
       "model": "Room",
       "foreignKey": "idRoom",
