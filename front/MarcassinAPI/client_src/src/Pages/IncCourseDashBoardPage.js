@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import SideMenu from '../Components/sideMenu/sideMenu'
+import Courses from '../Components/Courses/courses'
 
 class IncCourseDashBoardPage extends Component {
 
@@ -7,7 +8,9 @@ class IncCourseDashBoardPage extends Component {
         return(
             <div className="row pageWrapper">
                 <SideMenu />
-                <div className='container'>
+                <div className='col s12 container'>
+                    <Courses 
+                    getCoursesParams={this.getCoursesParams}/>
                 </div>
             </div>
         )

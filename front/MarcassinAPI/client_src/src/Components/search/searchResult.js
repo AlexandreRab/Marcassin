@@ -57,7 +57,7 @@ class SearchResult extends Component {
                                             <td>
                                                 <Link
                                                     to={`/course/${courses[key].idCours}`}
-                                                    className='btn waves-effect waves-light blue lighten-1"'>
+                                                    className='btn waves-effect waves-light blue lighten-1'>
                                                     Voir le cours
                                                     <i className="far fa-eye fa-sm right"></i>
                                                 </Link>

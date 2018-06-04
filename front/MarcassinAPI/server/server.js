@@ -2,6 +2,7 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+//var socketIO = require('socket.io');
 
 var app = module.exports = loopback();
 
@@ -25,6 +26,31 @@ boot(app, __dirname, function(err) {
 
   // start the server if `$ node server.js`
   if (require.main === module){
-    app.start();
+		app.start();
+	  /*app.io = require('socket.io')(app.start());
+       //app.io.on('connection', function(socket){
+		   socket.on('new_message', (content , idRoom, idUser) => {
+			console.log('new_message in room ', idRoom , "by " , idUser ,"content : ", content)
+			app.io.sockets.emit('new_message', content,idRoom, idUser)
+			})
+		console.log('a user connected');
+		socket.on('disconnect', function(){
+        console.log('user disconnected');
+			});
+			  // notify other clients that a new user has joined
+			/*socket.broadcast.emit('user:join', {
+				nom: nom,
+				prenom: prenom
+			});
+
+			// broadcast a user's message to other users
+			socket.on('send:message', function (data) {
+				socket.broadcast.emit('send:message', {
+					user: nom,
+					text: data.message
+				});
+			});*/
+	   //});
+
   }
 });

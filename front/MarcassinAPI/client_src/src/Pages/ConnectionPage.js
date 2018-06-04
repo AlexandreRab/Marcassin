@@ -25,10 +25,11 @@ class ConnectionPage extends Component {
     login=(utilisateur)=>{
         let identifiant = ''
         
-        
+
         getFromApi('http://localhost:3000/api/Utilisateurs')
         .then(data => {
             identifiant = data.filter( ut => {return ut.nom === utilisateur})
+            
             
 
             if(identifiant.length > 0)
