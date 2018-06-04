@@ -46,10 +46,15 @@ const Header = () => {
                             </Link>
                         </li>*/}
                         <li>
-                            <Link to="/connect">
-                                Deconnexion &nbsp;
-                                <i className="fa fa-power-off fa-sm"></i>
+                            <Link to="/Login">
+                                Se Connecter &nbsp;
+                                <i className="fas fa-sign-in-alt fa-sm"></i>
                             </Link>
+                        {/*
+                            <Link to="/Connet">
+                                Se Deconnecter $nbsp;
+                                <i className="fa fa-power-off fa-sm"></i>
+                        */}
                         </li>
                     </ul>
 

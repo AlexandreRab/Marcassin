@@ -15,6 +15,7 @@ export function getFromApi(url){
     })
     return request
 };
+<<<<<<< HEAD
 
 /**
  * Post data in database
@@ -35,3 +36,5 @@ export function postInApi(url , newData){
 };
 
 
+=======
+>>>>>>> Connexion non terminée

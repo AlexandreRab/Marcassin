@@ -4,6 +4,9 @@ import moment from 'moment'
 import TimeSelector from '../Components/timeSelector/TimeSelector'
 import { postInApi } from '../Components/dbQueries';
 
+import { Component } from 'react'
+
+
 /**
  * Page for adding a course
  * @Simon Huet
