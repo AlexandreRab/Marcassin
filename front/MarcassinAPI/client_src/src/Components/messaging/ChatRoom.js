@@ -1,5 +1,5 @@
 import React , { Component } from 'react'
-import socketIOClient from 'socket.io-client'
+
 import MessageForm from './MessageForm'
 import MessageList from './MessageList'
 import { getFromApi } from '../dbQueries'
@@ -37,22 +37,11 @@ class ChatRoom extends Component{
         return {users: [], messages:[], text: ''};
     }
   
-    componentDidMount() {
-        /*const socket = socketIOClient(this.state.endpoint)
-        socket.on('init', this._initialize);
-        socket.on('send:message', this._messageRecieve);
-        socket.on('user:join', this._userJoined);
-        socket.on('user:left', this._userLeft);
-        socket.on('change:name', this._userChangedName);*/
-    }
+
   
   
     handleMessageSubmit(message) {
-       /* const socket = socketIOClient(this.state.endpoint)
-        let {messages} = this.state;
-        messages.push(message);
-        this.setState({messages});
-        socket.emit('send:message', message);*/
+       
     }
   
     render() {

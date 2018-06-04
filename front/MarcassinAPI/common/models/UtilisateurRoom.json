@@ -45,7 +45,7 @@
   "validations": [],
   "relations": {
     "utilisateur": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Utilisateur",
       "foreignKey": "idUtilisateur",
       "options": {
