@@ -15,7 +15,8 @@
     "react-scripts": "^1.1.4",
     "react-select": "^1.2.1",
     "react-tag-autocomplete": "^5.5.1",
-    "react-tag-input": "^5.0.2"
+    "react-tag-input": "^5.0.2",
+    "socket.io-client": "^2.1.1"
   },
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",

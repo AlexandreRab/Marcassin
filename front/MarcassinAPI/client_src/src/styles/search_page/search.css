@@ -62,9 +62,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.react-tags__selected-tag.competence{
-    background: #3f51b5;
-}
 
 .react-tags__selected-tag:after {
     content: '\2715';
@@ -93,7 +90,6 @@
     box-shadow:none !important;
     border-bottom:none !important;
 }
-.react-tags
 
 .react-tags__search input::-ms-clear {
     display: none;
@@ -165,14 +161,6 @@
     background: #42a5f5;
 }
 
-
-.react-tags__suggestions.competence li:hover,
-.react-tags__suggestions.competence li:focus,
-.react-tags__suggestions.competence li.is-active 
-{
-    cursor: pointer;
-    background: #3f51b5;
-}
 .react-tags__suggestions li:hover span,
 .react-tags__suggestions li:focus span,
 .react-tags__suggestions li.is-active span {

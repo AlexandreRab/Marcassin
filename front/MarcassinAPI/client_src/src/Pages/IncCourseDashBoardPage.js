@@ -1,11 +1,14 @@
 import React , { Component } from 'react';
+import SideMenu from '../Components/sideMenu/sideMenu'
 
 class IncCourseDashBoardPage extends Component {
 
     render(){
         return(
-            <div>
-                <h1> Page des cours terminés </h1>
+            <div className="row pageWrapper">
+                <SideMenu />
+                <div className='container'>
+                </div>
             </div>
         )
     }

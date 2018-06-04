@@ -2,7 +2,11 @@ import React from 'react';
 import logo from '../../ressources/Marcassin_Logo.png';
 import {Link} from 'react-router-dom';
 
-const Header = (est_chef, utilisateur) => {
+/**
+ * Header navbar
+ * @Simon-HUET
+ */
+const Header = () => {
     return (
         <div className='header'>
             <nav className="nav-fixed blue lighten-1">
@@ -13,11 +17,10 @@ const Header = (est_chef, utilisateur) => {
                     <a data-target="main-menu" className="sidenav-trigger">
                         <i className="fa fa-bars"></i>
                     </a>
-
                     <ul className="right hide-on-med-and-down">
                         <li>
 
-                            <Link to="/search">
+                            <Link to="/">
                                 Trouver un cours &nbsp;
                                 <i className="fa fa-search fa-sm"></i>
                             </Link>
@@ -25,25 +28,25 @@ const Header = (est_chef, utilisateur) => {
                         </li>
 
                         <li>
-                            <Link to="/Profile">Profil &nbsp;
+                            <Link to="/profile">Profil &nbsp;
                                 <i className="fa fa-user fa-sm"></i>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/Messaging-box">
+                            <Link to="/messaging-box">
                                 Messagerie &nbsp;<i className="fa fa-comments fa-sm"></i>
 
                             </Link>
                         </li>
-                        {est_chef && <li>
+                        {/* feature for service chiefs
+                        est_chef && <li>
                             <Link to="/Course">
                                 Gestion du service &nbsp;
                                 <i className="fa fa-users fa-sm"></i>
                             </Link>
-                        </li>
-}
+                        </li>*/}
                         <li>
-                            <Link to="/Connect">
+                            <Link to="/connect">
                                 Deconnexion &nbsp;
                                 <i className="fa fa-power-off fa-sm"></i>
                             </Link>
@@ -54,30 +57,30 @@ const Header = (est_chef, utilisateur) => {
             </nav>
             <ul className="sidenav" id="main-menu">
                 <li>
-                    <Link to="/search">
+                    <Link to="/">
                         Trouver un cours &nbsp;
                         <i className="fa fa-search fa-sm"></i>
                     </Link>
                 </li>
 
                 <li>
-                    <Link to="/Profile">Profil &nbsp;
+                    <Link to="/profile">Profil &nbsp;
                         <i className="fa fa-user fa-sm"></i>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/Messaging-box">
+                    <Link to="/messaging-box">
                         Messagerie &nbsp;<i className="fa fa-comments fa-sm"></i>
                     </Link>
                 </li>
-                {est_chef && <li>
+                {/*est_chef && <li>
                     <Link to="/Course">
                         Gestion du service &nbsp;
                         <i className="fa fa-users fa-sm"></i>
                     </Link>
-                </li>}
+                </li>*/}
                 <li>
-                    <Link to="/Connect">
+                    <Link to="/connect">
                         Deconnexion &nbsp;
                         <i className="fa fa-power-off fa-sm"></i>
                     </Link>

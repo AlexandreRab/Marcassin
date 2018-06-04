@@ -93,7 +93,7 @@ class SearchPage extends Component {
                     : 0))
         });
         return (
-            <div className="col s12">
+            <div className="col s12 container">
                 <h2>Rechercher un cours</h2>
                 <div className="row search-bar">
                     <Search getSearchParams={this.getSearchParams}/>

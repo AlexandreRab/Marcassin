@@ -19,10 +19,19 @@ export function getFromApi(url){
 /**
  * Post data in database
  * @param {*} url 
+ * @param {Object} newData
  * @Simon HUET
  */
-export function postInApi(url){
-    axios.post(url).then(response=> console.log(response))
+export function postInApi(url , newData){
+   const request =  axios.request({
+        method:'post',
+        url: url,
+        data:newData
+    })
+    .then(response => {return response.data} )
+    .catch(err =>console.log(err))
+    
+    return request
 };
 
 
