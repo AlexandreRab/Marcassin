@@ -98,7 +98,7 @@
       }
     },
     "services": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Service",
       "foreignKey": "idService",
       "options": {

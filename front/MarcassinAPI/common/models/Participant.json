@@ -68,7 +68,7 @@
       }
     },
     "cours": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Cours",
       "foreignKey": "idCours",
       "options": {
