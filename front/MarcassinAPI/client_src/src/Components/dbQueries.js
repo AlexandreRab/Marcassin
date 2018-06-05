@@ -16,6 +16,7 @@ export function getFromApi(url){
     return request
 };
 
+
 /**
  * Post data in database
  * @param {*} url 
@@ -33,5 +34,4 @@ export function postInApi(url , newData){
     
     return request
 };
-
 

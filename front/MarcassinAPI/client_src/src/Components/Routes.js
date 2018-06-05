@@ -9,6 +9,7 @@ import FinCourseDashBoardPage from '../Pages/FinCourseDashBoardPage'
 import CoursePage from '../Pages/CoursePage'
 import addCoursePage from '../Pages/addCoursePage'
 import IncCourseDashBoardPage from '../Pages/IncCourseDashBoardPage'
+import LoginPage from '../Pages/ConnectionPage';
 
 const Routes = () => (
     <main>
@@ -20,6 +21,7 @@ const Routes = () => (
             <Route exact path='/course/:id' component={ CoursePage } />
             <Route exact path='/incomming-courses' component={ IncCourseDashBoardPage } />
             <Route exact path='/past-courses' component={ FinCourseDashBoardPage} />
+            <Route exact path='/login' component={LoginPage} />
         </Switch>
     </main>
 )

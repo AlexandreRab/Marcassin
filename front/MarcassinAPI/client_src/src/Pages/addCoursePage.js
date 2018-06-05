@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import SearchSelector from '../Components/searchSelector/SearchSelector'
 import moment from 'moment'
 import TimeSelector from '../Components/timeSelector/TimeSelector'
-import { postInApi } from '../Components/dbQueries';
+import { postInApi } from '../Components/dbQueries'
+
 
 /**
  * Page for adding a course

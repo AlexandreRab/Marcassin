@@ -3,6 +3,7 @@ import {getFromApi} from '../Components/dbQueries'
 import Search from '../Components/search/search'
 import SearchResult from '../Components/search/searchResult'
 
+
 /**
  * Searching page by categories or competence
  * @ Simon-Huet

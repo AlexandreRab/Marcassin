@@ -4,9 +4,9 @@
     "connector": "memory"
   },
   "mssql": {
-    "host": "DESKTOP-UDCEH87",
+    "host": "ALWYN/ALWYN",
     "port": 1433,
-    "url": "mssql://admin:Epsi2018!@DESKTOP-UDCEH87/Marcassin",
+    "url": "mssql://admin:Epsi2018!@ALWYN/ALWYN/Marcassin",
     "database": "Marcassin",
     "password": "Epsi2018!",
     "name": "mssql",

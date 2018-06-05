@@ -2,7 +2,12 @@ import React from 'react';
 import Routes from './Components/Routes'
 import Header from './Components/header/header';
 import { Link } from 'react-router-dom';
-//import ConnectionPage from './Pages/ConnectionPage'
+
+//Ajout pour la connexion
+
+//import { Provider } from 'react-redux';
+//import LoginForm from './Components/login/LoginForm';
+//import store from './login/store.js';
 
 const App = () => {
   let coursesPath = ['/','/incomming-courses','/Incomming-courses','/past-courses','/Past-courses'];
@@ -22,7 +27,7 @@ const App = () => {
     
   </div>
   )
-
+  
 }
 
 export default App;
