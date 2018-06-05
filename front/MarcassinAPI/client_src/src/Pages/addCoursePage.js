@@ -21,6 +21,7 @@ class addCoursePage extends Component {
             connectedUser: {idUtilisateur : 21 , estIntervenant: false} // when a user is logged in (user is spread in whole app)
         }
     }
+    
     addNewCourse =(newCourse)=>{
     
         postInApi(this.state.postUrl.postCourse , newCourse)

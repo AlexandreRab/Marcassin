@@ -173,12 +173,6 @@
     background-color: #42a5f5;
 }
 
-.react-tags__suggestions li:hover::before,
-.react-tags__suggestions li:focus::before,
-.react-tags__suggestions li.is-active::before 
-.competence{
-    background-color: #3f51b5;
-}
 .react-tags__suggestions li:hover+li::before,
 .react-tags__suggestions li:focus+li::before,
 .react-tags__suggestions li.is-active+li::before {
