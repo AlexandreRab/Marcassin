@@ -18,21 +18,45 @@ class Courses extends Component {
 
     getCoursesPending = () => {
 
-        let participes = []
+        let courses = []
         getFromApi("http://localhost:3000/api/Participants?filter[include][cours]&filter[where][idUtilisateur]=21").then(participes =>{
             Object.keys(participes).map(key => {    
             getFromApi("http://localhost:3000/api/LangueCompetences?filter[where][idCompetence]=" + participes[key].cours.idCompetence + "&filter[where][idLangue]=1&filter[include][competence]")
             .then(competence =>{
-                participes[key].competences= competence 
-                participes.push(participes[key])
-                this.setState({participes})
-                console.log(participes[key].competences[0])
+                participes[key].competence = competence[0]
+                
+                courses.push(participes[key])
+                if(competence.length === parseInt(key))
+                    this.setState({participes})
+                    
+                    })
+                    
                 })
             })
-        })
-        
-    }
+        }
 
+    getCoursesAccepted = () =>{
+        let courses = []
+        getFromApi("http://localhost:3000/api/Participants?filter[include][cours]&filter[where][idUtilisateur]=21").then(participes =>{
+            Object.keys(participes).map(key => {    
+            getFromApi("http://localhost:3000/api/LangueCompetences?filter[where][idCompetence]=" + participes[key].cours.idCompetence + "&filter[where][idLangue]=1&filter[include][competence]")
+            .then(competence =>{
+                participes[key].competence = competence[0]
+                courses.push(participes[key])
+                if(competence.length === parseInt(key))
+                {
+                    this.setState({participes})
+                    console.log(courses)
+                        if(courses[key].cours.statut === "Accepted")
+                        {
+                            return courses.cours.statut
+                        }
+                }
+            })
+        })
+    })
+}
+    
     render(){
         const {participes} = this.state;
         
@@ -60,8 +84,9 @@ class Courses extends Component {
                             .map(key => {
                                 return (
                                     <tr key={ participes[key].idCours }>
-                                        <td>{ moment(participes[key]).format('Do MMM YYYY HH:mm') }</td>
-                                        <td>{ participes[key].competences[0] }</td>
+                                        <td>{ moment(participes[key].cours.date).format('Do MMM YYYY HH:mm') }</td>
+
+                                        <td>{participes[key].competence && participes[key].competence.traduction }</td>
                                         <td>
                                             <Link
                                                 to={`/course/${participes[key].idCours}`}

@@ -10,7 +10,7 @@ class IncCourseDashBoardPage extends Component {
                 <SideMenu />
                 <div className='col s12 container'>
                     <Courses 
-                    getCoursesParams={this.getCoursesParams}/>
+                    getCoursesPending/>
                 </div>
             </div>
         )
