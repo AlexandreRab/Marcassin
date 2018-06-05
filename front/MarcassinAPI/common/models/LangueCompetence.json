@@ -60,7 +60,7 @@
   "validations": [],
   "relations": {
     "competence": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Competence",
       "foreignKey": "idCompetence",
       "options": {
@@ -68,7 +68,7 @@
       }
     },
     "langue": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Langue",
       "foreignKey": "idLangue",
       "options": {

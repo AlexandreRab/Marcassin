@@ -45,7 +45,7 @@
   "validations": [],
   "relations": {
     "badge": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Badge",
       "foreignKey": "idBadge",
       "options": {
@@ -53,7 +53,7 @@
       }
     },
     "utilisateurs": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Utilisateur",
       "foreignKey": "idUtilisateur",
       "options": {

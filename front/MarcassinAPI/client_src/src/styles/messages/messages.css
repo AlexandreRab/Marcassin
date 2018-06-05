@@ -37,6 +37,8 @@
 
 .messages ul li
 {
+    display: flex;
+    flex-direction: column;
     height: auto;
     margin-bottom: 10px;
     clear: both;
@@ -127,6 +129,9 @@
     background-color: #dbedfe;
 }
 
+.message-header{
+    font-size:10px;
+}
 .clear
 {
     clear: both;

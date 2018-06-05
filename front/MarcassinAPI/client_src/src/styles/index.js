@@ -7,3 +7,6 @@ import './courses/addCoursePage.css'
 import './page.css'
 import './courses/coursePage.css'
 import './messages/messages.css'
+
+import './profile/profile.css'
+
