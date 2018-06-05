@@ -88,4 +88,5 @@ textarea.materialize-textarea:focus:not([readonly])+label
 
 .collection-item.active{
     background-color: #42a5f5 !important;
+    color: #eafaf9 !important;
 }

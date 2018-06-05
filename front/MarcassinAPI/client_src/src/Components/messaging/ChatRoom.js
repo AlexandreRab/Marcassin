@@ -1,70 +1,63 @@
 import React , { Component } from 'react'
-
 import MessageForm from './MessageForm'
 import MessageList from './MessageList'
-import { getFromApi } from '../dbQueries'
+import { getFromApi, postInApi } from '../dbQueries'
 
 class ChatRoom extends Component{
     constructor(props){
         super(props)
         this.state ={
-            endpoint: "http://localhost:3000",
-            messages: [],
-            user :[],
-            users: [],
+            
         }
     }
-
-    componentWillReceiveProps(){
-        this.getRoomUsers()  
+    
+    componentWillReceiveProps(nextProps){
+        this.getRoomUsers(nextProps)
     }
 
-    getRoomUsers = () =>{
-        getFromApi(`http://localhost:3000/api/UtilisateurRooms?filter[where][idRoom]=${this.props.room.idRoom}&filter[include][utilisateur]`)
+    getRoomUsers = (nextProps) =>{
+        getFromApi(`http://localhost:3000/api/UtilisateurRooms?filter[where][idRoom]=${nextProps.room.idRoom}&filter[include][utilisateur]`)
         .then(data=>{
-            let users = this.state.users
-            console.log(data)
-            /*data.map(da=>{
-                /*users.push(da.utilisateur)
-                console.log(users)
-                
-
-            })*/
+            let users = []
+            data.map(da=>{
+               return users.push(da.utilisateur)
+            })
+            this.setState({users})
         })
     }
-  
-    getInitialState() {
-        return {users: [], messages:[], text: ''};
-    }
-  
-
-  
-  
-    handleMessageSubmit(message) {
-       
+    
+    handleMessageSubmit= (message)=> {
+       console.log(message)
+       postInApi(`http://localhost:3000/api/Messages`, message).then(
+           data =>{
+                this.props.newMessage()
+           }
+        )
     }
   
     render() {
-        const { room } = this.props
-        //const { users } = this.state
-
+        const { room , user} = this.props
+        const { users  } = this.state
         return (
             <div className="chat-box">
-                <div className='chat-box-header'>
+                <div className='chat-box-header Capitalize'>
                     <i className="fas fa-users"></i> Conversation : {room.nom}, 
-                      Utilisateurs :
-                {/*users.length >0  && users.map( user =>{
-                    return user.nom && user.prenom
-                })*/}
+                      Utilisateurs : 
+                {users && users.map((user,i) =>{
+                    return ` ${user.nom} ${user.prenom}${users.length-1 !== i ? ',': ''}`
+                })}
                 </div>
-                {/*room.length > 0 &&
+                {user && 
                 <MessageList
                     messages={room.messages}
-                />*/}
+                    user={user}
+                />}
+                {user &&
                 <MessageForm
                     onMessageSubmit={this.handleMessageSubmit}
-                    user={this.props.user}
-                />
+                    user={user}
+                    idRoom={room.idRoom}
+                />}
             
             </div>
         );

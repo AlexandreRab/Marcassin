@@ -13,13 +13,16 @@ class MessagePage extends Component {
             connectedUser: {
                 idUser: 21
             },
-            user: {},
-            selectedRoom: {},
             rooms: []
         }
     }
 
     componentWillMount() {
+        this.getRooms()
+        this.setState({selectedRoom: this.state.rooms[0]})
+    }
+
+    getRooms = () => {
         /**
        * get connected user
        */
@@ -33,27 +36,54 @@ class MessagePage extends Component {
                 Object
                     .keys(user.utilisateurRooms)
                     .map(key => {
-                        return getFromApi('http://localhost:3000/api/Rooms/' + user.utilisateurRooms[key].idRoom + "?filter[include][messages]").then(room => {
-                            rooms.push(room)
-                            this.setState({rooms})
-                            this.setState({selectedRoom: this.state.rooms[0]})
+                        return getFromApi(`http://localhost:3000/api/Rooms/${user.utilisateurRooms[key].idRoom}?filter[include][messages]`)
+                        .then(room => {
+                            if(room.messages.length>0){
+                            Object.keys(room.messages)
+                                .map(mesKey => {
+                                    return getFromApi(`http://localhost:3000/api/Utilisateurs/${room.messages[mesKey].idUtilisateur}`)
+                                    .then(author => {
+                                        rooms = this.state.rooms
+                                        room.messages[mesKey].utilisateur = author
+                                        if (parseInt(mesKey, 10) === room.messages.length - 1) {
+                                            rooms.push(room)
+                                          
+                                            this.setState({rooms})
+                                            
+                                        }
+
+                                    })
+                                })
+                            }else{
+                                rooms = this.state.rooms
+                                rooms.push(room)
+                                this.setState({rooms})
+                                
+                            }
+
                         })
+
                     })
             }
-
         })
-
     }
 
     changeSelectedRoom = (selectedRoom) => {
         this.setState({selectedRoom})
     }
 
+    newMessage =(data) =>{
+        console.log(data)
+        this.setState({rooms: []})
+        this.getRooms()
+        
+    }
+
     render() {
-        const { selectedRoom, user, rooms } = this.state
+        const {selectedRoom, user, rooms} = this.state
         return (
             <div>
-                {rooms.length > 0 && user.length > 0 && <div className="chat">
+                {rooms && user && <div className="chat">
                     <div className="col s12 m4 l3 left">
                         <ul className='collection'>
                             <li className='collection-header'>
@@ -80,7 +110,13 @@ class MessagePage extends Component {
                     </div>
 
                     <div className="col s12 m8 19 container right ">
-                        {selectedRoom && <ChatRoom room={selectedRoom} user={user}/>}
+                        {selectedRoom && user &&
+                        <ChatRoom 
+                            room = {selectedRoom}
+                            user = {user} 
+                            newMessage={this.newMessage}
+                        />
+                        }
                     </div>
                 </div>}
             </div>
