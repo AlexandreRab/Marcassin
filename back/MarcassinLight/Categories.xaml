@@ -1,0 +1,39 @@
+﻿<Page x:Class="MarcassinLight.Categories"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MarcassinLight"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1200"
+      Title="Categories">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.25*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1" Grid.Row="0" Content="Liste des categories" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="#FF1F7C31"/>
+        <StackPanel Grid.Column="1"  Grid.Row="1">
+            <ListView x:Name="list" Width="800" Height="450" HorizontalAlignment="Center">
+                <ListView.View>
+
+                    <GridView AllowsColumnReorder="true"
+                     ColumnHeaderToolTip="Categorie Information">
+                        <GridViewColumn Header="Catégorie" DisplayMemberBinding="{Binding Id_Categorie}" Width="250"/>
+                        <GridViewColumn Header="Catégorie mère" DisplayMemberBinding="{Binding Categorie_mere}" Width="250"/>
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Intitule }" Width="200"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <Button x:Name="Creation" Content="Ajouter" Click="Creation_Click" Grid.Column="1" Grid.Row="2" Height="35" Width="100" FontSize="18" Background="#FF1F7C31" BorderBrush="#ecf0f1" Foreground="White" Style="{StaticResource MyButton}"/>
+    </Grid>
+</Page>
