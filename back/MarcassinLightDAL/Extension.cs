@@ -62,22 +62,11 @@ namespace MarcassinLightDAL
             {
                 using (var db = new MarcassinEntities())
                 {
-                    var cate= from c in db.Categorie
-                               where c.id_Categorie == cat.id_Categorie_Mere
-                               select c.Intitule;
-                    
-                    var catme = "Aucune";
-                    if (cate != null)
-                    {
-                        catme = cate.FirstOrDefault();
-                    }
-
                     var bo = new Categorie_BO
                     {
                         Id_Categorie = cat.id_Categorie,
                         Id_Categorie_mere = cat.id_Categorie_Mere,
-                        Categorie_mere = catme,
-                        Intitule=cat.Intitule
+                        Intitule = cat.Intitule
                     };
                     listCategorieBO.Add(bo);
                 }

@@ -10,7 +10,6 @@ namespace MarcassinLightBO
     {
         public int Id_Categorie { get; set; }
         public int? Id_Categorie_mere { get; set; }
-        public string Categorie_mere { get; set; }
         public string Intitule { get; set; }
         public override string ToString()
         {
