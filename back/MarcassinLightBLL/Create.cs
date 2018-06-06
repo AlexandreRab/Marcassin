@@ -14,7 +14,6 @@ namespace MarcassinLightBLL
         {
             Competence_DAL.AddCompetence(compBO);
         }
-<<<<<<< HEAD
 
         public static void CreateLangue(Langue_BO langBO)
         {
@@ -23,11 +22,6 @@ namespace MarcassinLightBLL
         public static void CreateBadge(Badge_BO badgBO)
         {
             Badge_Dal.AddBadge(badgBO);
-=======
-        public static void CreateCategorie(Categorie_BO catBO)
-        {
-            Categorie_DAL.AddCategorie(catBO);
->>>>>>> Added categorie page
         }
     }
 }
