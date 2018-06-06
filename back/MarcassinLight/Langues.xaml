@@ -1,0 +1,42 @@
+﻿<Page x:Class="MarcassinLight.Langues"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MarcassinLight"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1200"
+      Title="Langues">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.25*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1" Grid.Row="0" Content="Liste des langues" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="#FF1F7C31"/>
+        <StackPanel Grid.Column="1"  Grid.Row="1" Grid.ColumnSpan="2">
+            <ListView x:Name="list" Width="502" Height="450" HorizontalAlignment="Center">
+                <ListView.View>
+
+                    <GridView AllowsColumnReorder="true"
+                     ColumnHeaderToolTip="Competence Information">
+                        <GridViewColumn Header="IdLangue" DisplayMemberBinding="{Binding Id_Langue}" Width="100"/>
+                        <GridViewColumn Header="Intitulé" DisplayMemberBinding="{Binding Intitule}" Width="300"/>
+                        <GridViewColumn Header="Par Défaut" DisplayMemberBinding="{Binding Par_Defaut}" Width="100"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <Button x:Name="Creation" Content="Ajouter" Click="Creation_Click" Grid.Column="2" Grid.Row="2" Height="35" Width="100" FontSize="18" Background="#FF1F7C31" BorderBrush="#ecf0f1" Foreground="White" Style="{StaticResource MyButton}" HorizontalAlignment="Right" Margin="0,0,19.8,0"/>
+        <Label Grid.Column="1" Grid.Row="5" Content="Nouvelle compétence :" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="#FF1F7C31"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Name="C1" Height="35" Width="700"/>
+    </Grid>
+</Page>

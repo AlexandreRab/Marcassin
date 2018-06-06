@@ -1,0 +1,1248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MarcassinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Badge">
+          <Key>
+            <PropertyRef Name="id_Badge" />
+          </Key>
+          <Property Name="id_Badge" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="images" Type="nvarchar(max)" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="id_Categorie" />
+          </Key>
+          <Property Name="id_Categorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Intitule" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="id_Categorie_Mere" Type="int" />
+        </EntityType>
+        <EntityType Name="Categorie_Langue">
+          <Key>
+            <PropertyRef Name="Id_Categorie" />
+            <PropertyRef Name="id_Langue" />
+          </Key>
+          <Property Name="Id_Categorie" Type="int" Nullable="false" />
+          <Property Name="id_Langue" Type="int" Nullable="false" />
+          <Property Name="Traduction" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Competence">
+          <Key>
+            <PropertyRef Name="id_Competence" />
+          </Key>
+          <Property Name="id_Competence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_categorie" Type="int" Nullable="false" />
+          <Property Name="id_Competence_ref" Type="int" />
+          <Property Name="est_actif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="id_Cours" />
+          </Key>
+          <Property Name="id_Cours" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Competence" Type="int" Nullable="false" />
+          <Property Name="Lieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Statut" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="Langue">
+          <Key>
+            <PropertyRef Name="id_Langue" />
+          </Key>
+          <Property Name="id_Langue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Langue_intitule" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Par_Defaut" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Langue_Badge">
+          <Key>
+            <PropertyRef Name="id_Langue" />
+            <PropertyRef Name="id_Badge" />
+          </Key>
+          <Property Name="id_Langue" Type="int" Nullable="false" />
+          <Property Name="id_Badge" Type="int" Nullable="false" />
+          <Property Name="Traduction" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Langue_Competence">
+          <Key>
+            <PropertyRef Name="id_Langue" />
+            <PropertyRef Name="id_Competence" />
+          </Key>
+          <Property Name="id_Langue" Type="int" Nullable="false" />
+          <Property Name="id_Competence" Type="int" Nullable="false" />
+          <Property Name="Traduction" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="id_Message" />
+          </Key>
+          <Property Name="id_Message" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contenu" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="id_source" Type="int" Nullable="false" />
+          <Property Name="id_Room" Type="int" Nullable="false" />
+          <Property Name="date_ajout" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="id_Utilisateur" />
+            <PropertyRef Name="id_Cours" />
+          </Key>
+          <Property Name="id_Utilisateur" Type="int" Nullable="false" />
+          <Property Name="id_Cours" Type="int" Nullable="false" />
+          <Property Name="est_orga" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personnel">
+          <Key>
+            <PropertyRef Name="id_Utilisateur" />
+          </Key>
+          <Property Name="id_Utilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_deb_contrat" Type="date" Nullable="false" />
+          <Property Name="Date_fin_contrat" Type="date" />
+          <Property Name="Est_admin" Type="bit" Nullable="false" />
+          <Property Name="id_service" Type="int" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="id_Room" />
+          </Key>
+          <Property Name="id_Room" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="id_Service" />
+          </Key>
+          <Property Name="id_Service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_chef" Type="int" Nullable="false" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="id_Utilisateur" />
+          </Key>
+          <Property Name="id_Utilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mot_de_passe" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Numero_Telephone" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="100" />
+          <Property Name="Pays" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sexe" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Est_intervenant" Type="bit" Nullable="false" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Linkedin" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Utilisateur_Badge">
+          <Key>
+            <PropertyRef Name="id_Utilisateur" />
+            <PropertyRef Name="id_Badge" />
+          </Key>
+          <Property Name="id_Utilisateur" Type="int" Nullable="false" />
+          <Property Name="id_Badge" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilisateur_Competence">
+          <Key>
+            <PropertyRef Name="id_Utilisateur" />
+            <PropertyRef Name="id_Competence" />
+          </Key>
+          <Property Name="id_Utilisateur" Type="int" Nullable="false" />
+          <Property Name="id_Competence" Type="int" Nullable="false" />
+          <Property Name="note" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilisateur_Room">
+          <Key>
+            <PropertyRef Name="id_Room" />
+            <PropertyRef Name="id_Utilisateur" />
+          </Key>
+          <Property Name="id_Room" Type="int" Nullable="false" />
+          <Property Name="id_Utilisateur" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Categorie_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="0..1" />
+          <End Role="Categorie1" Type="Self.Categorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id_Categorie" />
+            </Principal>
+            <Dependent Role="Categorie1">
+              <PropertyRef Name="id_Categorie_Mere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categorie_Langue_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Categorie_Langue" Type="Self.Categorie_Langue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id_Categorie" />
+            </Principal>
+            <Dependent Role="Categorie_Langue">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categorie_Langue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Categorie_Langue" Type="Self.Categorie_Langue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="id_Langue" />
+            </Principal>
+            <Dependent Role="Categorie_Langue">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competence_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Competence" Type="Self.Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id_Categorie" />
+            </Principal>
+            <Dependent Role="Competence">
+              <PropertyRef Name="id_categorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competence_Competence">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="0..1" />
+          <End Role="Competence1" Type="Self.Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Competence1">
+              <PropertyRef Name="id_Competence_ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cours_Cours">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="1" />
+          <End Role="Cours" Type="Self.Cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Cours">
+              <PropertyRef Name="id_Competence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Langue_Badge_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
+          <End Role="Langue_Badge" Type="Self.Langue_Badge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="id_Badge" />
+            </Principal>
+            <Dependent Role="Langue_Badge">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Langue_Badge_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Langue_Badge" Type="Self.Langue_Badge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="id_Langue" />
+            </Principal>
+            <Dependent Role="Langue_Badge">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="id_Room" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="id_Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="id_source" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Participant_Cours">
+          <End Role="Cours" Type="Self.Cours" Multiplicity="1" />
+          <End Role="Participant" Type="Self.Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cours">
+              <PropertyRef Name="id_Cours" />
+            </Principal>
+            <Dependent Role="Participant">
+              <PropertyRef Name="id_Cours" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Participant_Personnel">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+          <End Role="Participant" Type="Self.Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Participant">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="id_Service" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="id_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traduction_competence_Competence">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="1" />
+          <End Role="Langue_Competence" Type="Self.Langue_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Langue_Competence">
+              <PropertyRef Name="id_Competence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traduction_competence_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Langue_Competence" Type="Self.Langue_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="id_Langue" />
+            </Principal>
+            <Dependent Role="Langue_Competence">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_Badge_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
+          <End Role="Utilisateur_Badge" Type="Self.Utilisateur_Badge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="id_Badge" />
+            </Principal>
+            <Dependent Role="Utilisateur_Badge">
+              <PropertyRef Name="id_Badge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_Badge_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Utilisateur_Badge" Type="Self.Utilisateur_Badge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Utilisateur_Badge">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_Compétence_Competence">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="1" />
+          <End Role="Utilisateur_Competence" Type="Self.Utilisateur_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Utilisateur_Competence">
+              <PropertyRef Name="id_Competence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_Compétence_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Utilisateur_Competence" Type="Self.Utilisateur_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Utilisateur_Competence">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_Room_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Utilisateur_Room" Type="Self.Utilisateur_Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="id_Room" />
+            </Principal>
+            <Dependent Role="Utilisateur_Room">
+              <PropertyRef Name="id_Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_Room_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Utilisateur_Room" Type="Self.Utilisateur_Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Utilisateur_Room">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MarcassinModelStoreContainer">
+          <EntitySet Name="Badge" EntityType="Self.Badge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorie_Langue" EntityType="Self.Categorie_Langue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competence" EntityType="Self.Competence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cours" EntityType="Self.Cours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Langue" EntityType="Self.Langue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Langue_Badge" EntityType="Self.Langue_Badge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Langue_Competence" EntityType="Self.Langue_Competence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur_Badge" EntityType="Self.Utilisateur_Badge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur_Competence" EntityType="Self.Utilisateur_Competence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur_Room" EntityType="Self.Utilisateur_Room" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Categorie_Categorie" Association="Self.FK_Categorie_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Categorie1" EntitySet="Categorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categorie_Langue_Categorie" Association="Self.FK_Categorie_Langue_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Categorie_Langue" EntitySet="Categorie_Langue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categorie_Langue_Langue" Association="Self.FK_Categorie_Langue_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Categorie_Langue" EntitySet="Categorie_Langue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competence_Categorie" Association="Self.FK_Competence_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Competence" EntitySet="Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competence_Competence" Association="Self.FK_Competence_Competence">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Competence1" EntitySet="Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cours_Cours" Association="Self.FK_Cours_Cours">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Cours" EntitySet="Cours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Langue_Badge_Badge" Association="Self.FK_Langue_Badge_Badge">
+            <End Role="Badge" EntitySet="Badge" />
+            <End Role="Langue_Badge" EntitySet="Langue_Badge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Langue_Badge_Langue" Association="Self.FK_Langue_Badge_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Langue_Badge" EntitySet="Langue_Badge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Room" Association="Self.FK_Message_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Utilisateur" Association="Self.FK_Message_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participant_Cours" Association="Self.FK_Participant_Cours">
+            <End Role="Cours" EntitySet="Cours" />
+            <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participant_Personnel" Association="Self.FK_Participant_Personnel">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Service" Association="Self.FK_Personnel_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Utilisateur" Association="Self.FK_Personnel_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traduction_competence_Competence" Association="Self.FK_Traduction_competence_Competence">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Langue_Competence" EntitySet="Langue_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traduction_competence_Langue" Association="Self.FK_Traduction_competence_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Langue_Competence" EntitySet="Langue_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_Badge_Badge" Association="Self.FK_Utilisateur_Badge_Badge">
+            <End Role="Badge" EntitySet="Badge" />
+            <End Role="Utilisateur_Badge" EntitySet="Utilisateur_Badge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_Badge_Utilisateur" Association="Self.FK_Utilisateur_Badge_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Utilisateur_Badge" EntitySet="Utilisateur_Badge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_Compétence_Competence" Association="Self.FK_Utilisateur_Compétence_Competence">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Utilisateur_Competence" EntitySet="Utilisateur_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_Compétence_Utilisateur" Association="Self.FK_Utilisateur_Compétence_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Utilisateur_Competence" EntitySet="Utilisateur_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_Room_Room" Association="Self.FK_Utilisateur_Room_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Utilisateur_Room" EntitySet="Utilisateur_Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_Room_Utilisateur" Association="Self.FK_Utilisateur_Room_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Utilisateur_Room" EntitySet="Utilisateur_Room" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MarcassinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Badge">
+          <Key>
+            <PropertyRef Name="id_Badge" />
+          </Key>
+          <Property Name="id_Badge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="images" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Langue_Badge" Relationship="Self.FK_Langue_Badge_Badge" FromRole="Badge" ToRole="Langue_Badge" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.Utilisateur_Badge" FromRole="Badge" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="id_Categorie" />
+          </Key>
+          <Property Name="id_Categorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Intitule" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_Categorie_Mere" Type="Int32" />
+          <NavigationProperty Name="Categorie1" Relationship="Self.FK_Categorie_Categorie" FromRole="Categorie" ToRole="Categorie1" />
+          <NavigationProperty Name="Categorie2" Relationship="Self.FK_Categorie_Categorie" FromRole="Categorie1" ToRole="Categorie" />
+          <NavigationProperty Name="Categorie_Langue" Relationship="Self.FK_Categorie_Langue_Categorie" FromRole="Categorie" ToRole="Categorie_Langue" />
+          <NavigationProperty Name="Competence" Relationship="Self.FK_Competence_Categorie" FromRole="Categorie" ToRole="Competence" />
+        </EntityType>
+        <EntityType Name="Categorie_Langue">
+          <Key>
+            <PropertyRef Name="Id_Categorie" />
+            <PropertyRef Name="id_Langue" />
+          </Key>
+          <Property Name="Id_Categorie" Type="Int32" Nullable="false" />
+          <Property Name="id_Langue" Type="Int32" Nullable="false" />
+          <Property Name="Traduction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK_Categorie_Langue_Categorie" FromRole="Categorie_Langue" ToRole="Categorie" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_Categorie_Langue_Langue" FromRole="Categorie_Langue" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="Competence">
+          <Key>
+            <PropertyRef Name="id_Competence" />
+          </Key>
+          <Property Name="id_Competence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_categorie" Type="Int32" Nullable="false" />
+          <Property Name="id_Competence_ref" Type="Int32" />
+          <Property Name="est_actif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK_Competence_Categorie" FromRole="Competence" ToRole="Categorie" />
+          <NavigationProperty Name="Competence1" Relationship="Self.FK_Competence_Competence" FromRole="Competence" ToRole="Competence1" />
+          <NavigationProperty Name="Competence2" Relationship="Self.FK_Competence_Competence" FromRole="Competence1" ToRole="Competence" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK_Cours_Cours" FromRole="Competence" ToRole="Cours" />
+          <NavigationProperty Name="Langue_Competence" Relationship="Self.FK_Traduction_competence_Competence" FromRole="Competence" ToRole="Langue_Competence" />
+          <NavigationProperty Name="Utilisateur_Competence" Relationship="Self.FK_Utilisateur_Compétence_Competence" FromRole="Competence" ToRole="Utilisateur_Competence" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="id_Cours" />
+          </Key>
+          <Property Name="id_Cours" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Competence" Type="Int32" Nullable="false" />
+          <Property Name="Lieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Statut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Competence" Relationship="Self.FK_Cours_Cours" FromRole="Cours" ToRole="Competence" />
+          <NavigationProperty Name="Participant" Relationship="Self.FK_Participant_Cours" FromRole="Cours" ToRole="Participant" />
+        </EntityType>
+        <EntityType Name="Langue">
+          <Key>
+            <PropertyRef Name="id_Langue" />
+          </Key>
+          <Property Name="id_Langue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Langue_intitule" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Par_Defaut" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Categorie_Langue" Relationship="Self.FK_Categorie_Langue_Langue" FromRole="Langue" ToRole="Categorie_Langue" />
+          <NavigationProperty Name="Langue_Badge" Relationship="Self.FK_Langue_Badge_Langue" FromRole="Langue" ToRole="Langue_Badge" />
+          <NavigationProperty Name="Langue_Competence" Relationship="Self.FK_Traduction_competence_Langue" FromRole="Langue" ToRole="Langue_Competence" />
+        </EntityType>
+        <EntityType Name="Langue_Badge">
+          <Key>
+            <PropertyRef Name="id_Langue" />
+            <PropertyRef Name="id_Badge" />
+          </Key>
+          <Property Name="id_Langue" Type="Int32" Nullable="false" />
+          <Property Name="id_Badge" Type="Int32" Nullable="false" />
+          <Property Name="Traduction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Badge" Relationship="Self.FK_Langue_Badge_Badge" FromRole="Langue_Badge" ToRole="Badge" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_Langue_Badge_Langue" FromRole="Langue_Badge" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="Langue_Competence">
+          <Key>
+            <PropertyRef Name="id_Langue" />
+            <PropertyRef Name="id_Competence" />
+          </Key>
+          <Property Name="id_Langue" Type="Int32" Nullable="false" />
+          <Property Name="id_Competence" Type="Int32" Nullable="false" />
+          <Property Name="Traduction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Competence" Relationship="Self.FK_Traduction_competence_Competence" FromRole="Langue_Competence" ToRole="Competence" />
+          <NavigationProperty Name="Langue" Relationship="Self.FK_Traduction_competence_Langue" FromRole="Langue_Competence" ToRole="Langue" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="id_Message" />
+          </Key>
+          <Property Name="id_Message" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contenu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_source" Type="Int32" Nullable="false" />
+          <Property Name="id_Room" Type="Int32" Nullable="false" />
+          <Property Name="date_ajout" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Message_Room" FromRole="Message" ToRole="Room" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Message_Utilisateur" FromRole="Message" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="id_Utilisateur" />
+            <PropertyRef Name="id_Cours" />
+          </Key>
+          <Property Name="id_Utilisateur" Type="Int32" Nullable="false" />
+          <Property Name="id_Cours" Type="Int32" Nullable="false" />
+          <Property Name="est_orga" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK_Participant_Cours" FromRole="Participant" ToRole="Cours" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK_Participant_Personnel" FromRole="Participant" ToRole="Personnel" />
+        </EntityType>
+        <EntityType Name="Personnel">
+          <Key>
+            <PropertyRef Name="id_Utilisateur" />
+          </Key>
+          <Property Name="id_Utilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_deb_contrat" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_fin_contrat" Type="DateTime" Precision="0" />
+          <Property Name="Est_admin" Type="Boolean" Nullable="false" />
+          <Property Name="id_service" Type="Int32" />
+          <NavigationProperty Name="Participant" Relationship="Self.FK_Participant_Personnel" FromRole="Personnel" ToRole="Participant" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_Personnel_Service" FromRole="Personnel" ToRole="Service" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Personnel_Utilisateur" FromRole="Personnel" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="id_Room" />
+          </Key>
+          <Property Name="id_Room" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Message" Relationship="Self.FK_Message_Room" FromRole="Room" ToRole="Message" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.Utilisateur_Room" FromRole="Room" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="id_Service" />
+          </Key>
+          <Property Name="id_Service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_chef" Type="Int32" Nullable="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK_Personnel_Service" FromRole="Service" ToRole="Personnel" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="id_Utilisateur" />
+          </Key>
+          <Property Name="id_Utilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mot_de_passe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Numero_Telephone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adresse" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ville" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Pays" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sexe" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Est_intervenant" Type="Boolean" Nullable="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="Linkedin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Message" Relationship="Self.FK_Message_Utilisateur" FromRole="Utilisateur" ToRole="Message" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK_Personnel_Utilisateur" FromRole="Utilisateur" ToRole="Personnel" />
+          <NavigationProperty Name="Utilisateur_Competence" Relationship="Self.FK_Utilisateur_Compétence_Utilisateur" FromRole="Utilisateur" ToRole="Utilisateur_Competence" />
+          <NavigationProperty Name="Badge" Relationship="Self.Utilisateur_Badge" FromRole="Utilisateur" ToRole="Badge" />
+          <NavigationProperty Name="Room" Relationship="Self.Utilisateur_Room" FromRole="Utilisateur" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Utilisateur_Competence">
+          <Key>
+            <PropertyRef Name="id_Utilisateur" />
+            <PropertyRef Name="id_Competence" />
+          </Key>
+          <Property Name="id_Utilisateur" Type="Int32" Nullable="false" />
+          <Property Name="id_Competence" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Competence" Relationship="Self.FK_Utilisateur_Compétence_Competence" FromRole="Utilisateur_Competence" ToRole="Competence" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Utilisateur_Compétence_Utilisateur" FromRole="Utilisateur_Competence" ToRole="Utilisateur" />
+        </EntityType>
+        <Association Name="FK_Langue_Badge_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
+          <End Role="Langue_Badge" Type="Self.Langue_Badge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="id_Badge" />
+            </Principal>
+            <Dependent Role="Langue_Badge">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categorie_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="0..1" />
+          <End Role="Categorie1" Type="Self.Categorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id_Categorie" />
+            </Principal>
+            <Dependent Role="Categorie1">
+              <PropertyRef Name="id_Categorie_Mere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categorie_Langue_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Categorie_Langue" Type="Self.Categorie_Langue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id_Categorie" />
+            </Principal>
+            <Dependent Role="Categorie_Langue">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competence_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Competence" Type="Self.Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id_Categorie" />
+            </Principal>
+            <Dependent Role="Competence">
+              <PropertyRef Name="id_categorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categorie_Langue_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Categorie_Langue" Type="Self.Categorie_Langue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="id_Langue" />
+            </Principal>
+            <Dependent Role="Categorie_Langue">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competence_Competence">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="0..1" />
+          <End Role="Competence1" Type="Self.Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Competence1">
+              <PropertyRef Name="id_Competence_ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cours_Cours">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="1" />
+          <End Role="Cours" Type="Self.Cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Cours">
+              <PropertyRef Name="id_Competence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traduction_competence_Competence">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="1" />
+          <End Role="Langue_Competence" Type="Self.Langue_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Langue_Competence">
+              <PropertyRef Name="id_Competence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_Compétence_Competence">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="1" />
+          <End Role="Utilisateur_Competence" Type="Self.Utilisateur_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="id_Competence" />
+            </Principal>
+            <Dependent Role="Utilisateur_Competence">
+              <PropertyRef Name="id_Competence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Participant_Cours">
+          <End Role="Cours" Type="Self.Cours" Multiplicity="1" />
+          <End Role="Participant" Type="Self.Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cours">
+              <PropertyRef Name="id_Cours" />
+            </Principal>
+            <Dependent Role="Participant">
+              <PropertyRef Name="id_Cours" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Langue_Badge_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Langue_Badge" Type="Self.Langue_Badge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="id_Langue" />
+            </Principal>
+            <Dependent Role="Langue_Badge">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traduction_competence_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="1" />
+          <End Role="Langue_Competence" Type="Self.Langue_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="id_Langue" />
+            </Principal>
+            <Dependent Role="Langue_Competence">
+              <PropertyRef Name="id_Langue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="id_Room" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="id_Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="id_source" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Participant_Personnel">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+          <End Role="Participant" Type="Self.Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Participant">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="id_Service" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="id_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilisateur_Compétence_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Utilisateur_Competence" Type="Self.Utilisateur_Competence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id_Utilisateur" />
+            </Principal>
+            <Dependent Role="Utilisateur_Competence">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Utilisateur_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="*" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+        </Association>
+        <Association Name="Utilisateur_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MarcassinEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Badge" EntityType="Self.Badge" />
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" />
+          <EntitySet Name="Categorie_Langue" EntityType="Self.Categorie_Langue" />
+          <EntitySet Name="Competence" EntityType="Self.Competence" />
+          <EntitySet Name="Cours" EntityType="Self.Cours" />
+          <EntitySet Name="Langue" EntityType="Self.Langue" />
+          <EntitySet Name="Langue_Badge" EntityType="Self.Langue_Badge" />
+          <EntitySet Name="Langue_Competence" EntityType="Self.Langue_Competence" />
+          <EntitySet Name="Message" EntityType="Self.Message" />
+          <EntitySet Name="Participant" EntityType="Self.Participant" />
+          <EntitySet Name="Personnel" EntityType="Self.Personnel" />
+          <EntitySet Name="Room" EntityType="Self.Room" />
+          <EntitySet Name="Service" EntityType="Self.Service" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" />
+          <EntitySet Name="Utilisateur_Competence" EntityType="Self.Utilisateur_Competence" />
+          <AssociationSet Name="FK_Langue_Badge_Badge" Association="Self.FK_Langue_Badge_Badge">
+            <End Role="Badge" EntitySet="Badge" />
+            <End Role="Langue_Badge" EntitySet="Langue_Badge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categorie_Categorie" Association="Self.FK_Categorie_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Categorie1" EntitySet="Categorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categorie_Langue_Categorie" Association="Self.FK_Categorie_Langue_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Categorie_Langue" EntitySet="Categorie_Langue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competence_Categorie" Association="Self.FK_Competence_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Competence" EntitySet="Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categorie_Langue_Langue" Association="Self.FK_Categorie_Langue_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Categorie_Langue" EntitySet="Categorie_Langue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competence_Competence" Association="Self.FK_Competence_Competence">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Competence1" EntitySet="Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cours_Cours" Association="Self.FK_Cours_Cours">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Cours" EntitySet="Cours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traduction_competence_Competence" Association="Self.FK_Traduction_competence_Competence">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Langue_Competence" EntitySet="Langue_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_Compétence_Competence" Association="Self.FK_Utilisateur_Compétence_Competence">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Utilisateur_Competence" EntitySet="Utilisateur_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participant_Cours" Association="Self.FK_Participant_Cours">
+            <End Role="Cours" EntitySet="Cours" />
+            <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Langue_Badge_Langue" Association="Self.FK_Langue_Badge_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Langue_Badge" EntitySet="Langue_Badge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traduction_competence_Langue" Association="Self.FK_Traduction_competence_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Langue_Competence" EntitySet="Langue_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Room" Association="Self.FK_Message_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Utilisateur" Association="Self.FK_Message_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participant_Personnel" Association="Self.FK_Participant_Personnel">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Service" Association="Self.FK_Personnel_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Utilisateur" Association="Self.FK_Personnel_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilisateur_Compétence_Utilisateur" Association="Self.FK_Utilisateur_Compétence_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Utilisateur_Competence" EntitySet="Utilisateur_Competence" />
+          </AssociationSet>
+          <AssociationSet Name="Utilisateur_Badge" Association="Self.Utilisateur_Badge">
+            <End Role="Badge" EntitySet="Badge" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="Utilisateur_Room" Association="Self.Utilisateur_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MarcassinModelStoreContainer" CdmEntityContainer="MarcassinEntities">
+          <EntitySetMapping Name="Badge">
+            <EntityTypeMapping TypeName="MarcassinModel.Badge">
+              <MappingFragment StoreEntitySet="Badge">
+                <ScalarProperty Name="id_Badge" ColumnName="id_Badge" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorie">
+            <EntityTypeMapping TypeName="MarcassinModel.Categorie">
+              <MappingFragment StoreEntitySet="Categorie">
+                <ScalarProperty Name="id_Categorie" ColumnName="id_Categorie" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+                <ScalarProperty Name="id_Categorie_Mere" ColumnName="id_Categorie_Mere" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorie_Langue">
+            <EntityTypeMapping TypeName="MarcassinModel.Categorie_Langue">
+              <MappingFragment StoreEntitySet="Categorie_Langue">
+                <ScalarProperty Name="Id_Categorie" ColumnName="Id_Categorie" />
+                <ScalarProperty Name="id_Langue" ColumnName="id_Langue" />
+                <ScalarProperty Name="Traduction" ColumnName="Traduction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competence">
+            <EntityTypeMapping TypeName="MarcassinModel.Competence">
+              <MappingFragment StoreEntitySet="Competence">
+                <ScalarProperty Name="id_Competence" ColumnName="id_Competence" />
+                <ScalarProperty Name="id_categorie" ColumnName="id_categorie" />
+                <ScalarProperty Name="id_Competence_ref" ColumnName="id_Competence_ref" />
+                <ScalarProperty Name="est_actif" ColumnName="est_actif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cours">
+            <EntityTypeMapping TypeName="MarcassinModel.Cours">
+              <MappingFragment StoreEntitySet="Cours">
+                <ScalarProperty Name="id_Cours" ColumnName="id_Cours" />
+                <ScalarProperty Name="id_Competence" ColumnName="id_Competence" />
+                <ScalarProperty Name="Lieu" ColumnName="Lieu" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Statut" ColumnName="Statut" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Langue">
+            <EntityTypeMapping TypeName="MarcassinModel.Langue">
+              <MappingFragment StoreEntitySet="Langue">
+                <ScalarProperty Name="id_Langue" ColumnName="id_Langue" />
+                <ScalarProperty Name="Langue_intitule" ColumnName="Langue_intitule" />
+                <ScalarProperty Name="Par_Defaut" ColumnName="Par_Defaut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Langue_Badge">
+            <EntityTypeMapping TypeName="MarcassinModel.Langue_Badge">
+              <MappingFragment StoreEntitySet="Langue_Badge">
+                <ScalarProperty Name="id_Langue" ColumnName="id_Langue" />
+                <ScalarProperty Name="id_Badge" ColumnName="id_Badge" />
+                <ScalarProperty Name="Traduction" ColumnName="Traduction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Langue_Competence">
+            <EntityTypeMapping TypeName="MarcassinModel.Langue_Competence">
+              <MappingFragment StoreEntitySet="Langue_Competence">
+                <ScalarProperty Name="id_Langue" ColumnName="id_Langue" />
+                <ScalarProperty Name="id_Competence" ColumnName="id_Competence" />
+                <ScalarProperty Name="Traduction" ColumnName="Traduction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="MarcassinModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="id_Message" ColumnName="id_Message" />
+                <ScalarProperty Name="Contenu" ColumnName="Contenu" />
+                <ScalarProperty Name="id_source" ColumnName="id_source" />
+                <ScalarProperty Name="id_Room" ColumnName="id_Room" />
+                <ScalarProperty Name="date_ajout" ColumnName="date_ajout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participant">
+            <EntityTypeMapping TypeName="MarcassinModel.Participant">
+              <MappingFragment StoreEntitySet="Participant">
+                <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
+                <ScalarProperty Name="id_Cours" ColumnName="id_Cours" />
+                <ScalarProperty Name="est_orga" ColumnName="est_orga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personnel">
+            <EntityTypeMapping TypeName="MarcassinModel.Personnel">
+              <MappingFragment StoreEntitySet="Personnel">
+                <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
+                <ScalarProperty Name="Date_deb_contrat" ColumnName="Date_deb_contrat" />
+                <ScalarProperty Name="Date_fin_contrat" ColumnName="Date_fin_contrat" />
+                <ScalarProperty Name="Est_admin" ColumnName="Est_admin" />
+                <ScalarProperty Name="id_service" ColumnName="id_service" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Room">
+            <EntityTypeMapping TypeName="MarcassinModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="id_Room" ColumnName="id_Room" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="MarcassinModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="id_Service" ColumnName="id_Service" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="id_chef" ColumnName="id_chef" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateur">
+            <EntityTypeMapping TypeName="MarcassinModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="mot_de_passe" ColumnName="mot_de_passe" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Numero_Telephone" ColumnName="Numero_Telephone" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Pays" ColumnName="Pays" />
+                <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+                <ScalarProperty Name="Est_intervenant" ColumnName="Est_intervenant" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateur_Competence">
+            <EntityTypeMapping TypeName="MarcassinModel.Utilisateur_Competence">
+              <MappingFragment StoreEntitySet="Utilisateur_Competence">
+                <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
+                <ScalarProperty Name="id_Competence" ColumnName="id_Competence" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Utilisateur_Badge" TypeName="MarcassinModel.Utilisateur_Badge" StoreEntitySet="Utilisateur_Badge">
+            <EndProperty Name="Badge">
+              <ScalarProperty Name="id_Badge" ColumnName="id_Badge" />
+            </EndProperty>
+            <EndProperty Name="Utilisateur">
+              <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Utilisateur_Room" TypeName="MarcassinModel.Utilisateur_Room" StoreEntitySet="Utilisateur_Room">
+            <EndProperty Name="Room">
+              <ScalarProperty Name="id_Room" ColumnName="id_Room" />
+            </EndProperty>
+            <EndProperty Name="Utilisateur">
+              <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
